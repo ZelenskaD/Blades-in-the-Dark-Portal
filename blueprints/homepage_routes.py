@@ -1,6 +1,8 @@
 import os
 from flask import Blueprint, render_template
 
+from schemas.user_models import User
+# from blueprints.auth_routes import  CURR_USER_KEY
 # Define the absolute path to the template folder
 template_folder_path = os.path.join(os.path.dirname(__file__), '..', 'templates', 'home')
 

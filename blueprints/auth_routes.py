@@ -42,7 +42,6 @@ def show_sign_in_form():
                 username=form.username.data,
                 password=form.password.data,
                 email=form.email.data,
-                image_url=form.image_url.data or User.image_url.default.arg,
             )
             do_login(user)
             flash(f"Welcome, {user.username}! Your account was successfully created.", "success")

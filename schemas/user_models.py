@@ -23,11 +23,6 @@ class User(db.Model):
         unique=True,
     )
 
-    image_url = db.Column(
-        db.Text,
-        default="/static/default_profile.png",
-    )
-
     password = db.Column(
         db.Text,
         nullable=False,
@@ -37,7 +32,7 @@ class User(db.Model):
         return f"<User #{self.id}: {self.username}, {self.email}>"
 
     @classmethod
-    def signup(cls, username, email, password, image_url):
+    def signup(cls, username, email, password):
         """Sign up user.
 
         Hashes password and adds user to system.
@@ -49,7 +44,6 @@ class User(db.Model):
             username=username,
             email=email,
             password=hashed_pwd,
-            image_url=image_url,
         )
 
         db.session.add(user)
@@ -68,3 +62,7 @@ class User(db.Model):
                 return user
 
         return False
+
+    @staticmethod
+    def get_all():
+        return User.query.all()

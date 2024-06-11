@@ -17,11 +17,12 @@ body {
 }
 
 .hero {
-    height: 85vh;
+    height: 94vh;
     background-image: url("../blades_background.jpg");
     background-size: cover;
     background-position: top;
 }
+
 
 .dropdown-item {
     background-color: #5684A9;
@@ -111,4 +112,18 @@ body {
 .btn-primary:hover {
     background-color: #A1D3EA; /* Slightly darker color on hover */
     border: 2px solid #A1D3EA; /* Matching border color on hover */
+}
+
+/*SIGN UP FORM*/
+
+.sign-form{
+     background-color: rgba(0, 0, 0, 0.5);
+     color: white;
+}
+
+/*LOGIN FORM*/
+
+.login-form{
+     background-color: rgba(0, 0, 0, 0.5);
+     color: white;
 }
