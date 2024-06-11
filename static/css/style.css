@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+
+
+body {
+    /*background-image: url('../back.jpeg');*/
+    background-color: #050A13;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.hero {
+    height: 85vh;
+    background-image: url("../blades_background.jpg");
+    background-size: cover;
+    background-position: top;
+}
+
+.dropdown-item {
+    background-color: #5684A9;
+    color: white;
+    padding: 10px;
+    border: 1px solid #ffffff; /* White border */
+    border-radius: 5px; /* Adjust the radius as needed */
+    margin-bottom: 5px; /* Space between items */
+}
+.custom-navbar {
+    background-color: #1D3853; /* Custom background color */
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+    color: white; /* White text */
+}
+
+.custom-navbar .nav-link:hover {
+    color: #74A5C3; /* Slightly lighter on hover */
+}
+
+.custom-navbar .brand-logo {
+    width: 30px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    margin-right: 10px; /* Space between logo and text */
+}
+
+.profile-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+
+ h1, h4 {
+    font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
+    margin: 0;
+
+}
+
+.hero h4 {
+    padding-top: 100px;
+    font-size: 4em;
+    text-align: center;
+}
+
+.hero h1 {
+    text-align: center;
+    font-size: 8em;
+    margin-top: 40px;
+}
+.box {
+    text-align: center;
+}
+
+.box h4{
+    text-align: center;
+    font-size: 2em;
+    color: #B1E3FA;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px; /* Adjust padding to reduce the height */
+    border-radius: 10px; /* Adjust border radius as needed */
+    display: inline-block; /* Make the box fit the content */
+    border: 2px solid #B1E3FA; /* Add border with color */
+}
+
+.btn-primary {
+    background-color: #1D3853; /* Custom background color */
+    border: 2px solid #B1E3FA; /* Custom border color */
+    color: #B9E9FD; /* Custom text color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    font-size: 1em; /* Adjust font size as needed */
+    border-radius: 5px; /* Adjust border radius as needed */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    text-align: center;
+    text-decoration: none; /* Remove underline from links */
+    display: inline-block; /* Ensure the button respects padding */
+}
+.button-container {
+    padding-top: 30px;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background-color: #A1D3EA; /* Slightly darker color on hover */
+    border: 2px solid #A1D3EA; /* Matching border color on hover */
+}
