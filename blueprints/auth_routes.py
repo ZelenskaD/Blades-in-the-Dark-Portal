@@ -48,7 +48,7 @@ def show_sign_up_form():
             return redirect(url_for('homepage.show_main_page'))
 
         except IntegrityError:
-            flash("Username already taken", 'danger')
+            flash("Username or email already taken", 'danger')
             return render_template('auth/sign_up_form.html', form=form)
         except Exception as e:
             flash(f"An error occurred: {str(e)}", 'danger')
@@ -67,7 +67,7 @@ def login_user():
             flash(f"Welcome back, {user.username}!", "success")
             return redirect(url_for('homepage.show_main_page'))  # Use endpoint name
         else:
-            flash("Invalid credentials.", 'danger')
+            flash("User not found. Check your password or username.", 'danger')
 
     return render_template('auth/login_form.html', form=form)  # Corrected template path
 

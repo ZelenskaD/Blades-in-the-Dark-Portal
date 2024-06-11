@@ -27,6 +27,7 @@ class User(db.Model):
         db.Text,
         nullable=False,
     )
+    # campaigns = db.relationship('Campaign', backref='owner', lazy=True)
 
     def __repr__(self):
         return f"<User #{self.id}: {self.username}, {self.email}>"

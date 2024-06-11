@@ -1,7 +1,8 @@
 
 
-from flask import Blueprint, render_template, redirect, url_for, session, flash, g
+from flask import Blueprint, render_template, redirect, url_for, session, flash, g, request
 
+from blueprints.auth_routes import do_logout
 from requests.user_forms import EditUserForm
 from schemas import bcrypt, db
 from schemas.user_models import User
@@ -18,30 +19,56 @@ def add_user_to_g():
         g.user = None
 
 
-@users_bp.route('/profile', methods=['GET', 'POST'])
-def profile():
+@users_bp.route('/delete_profile', methods=["POST"])
+def delete_profile():
+    """Delete user."""
+
     if 'curr_user' not in session:
-        flash('Please log in to access your profile', 'danger')
-        return redirect(url_for('login'))
+        flash("Access unauthorized.", "danger")
+        return redirect(url_for('homepage.show_main_page'))
 
     user = User.query.get(session['curr_user'])
-    form = EditUserForm(obj=g.user)
+    if not user:
+        flash('User not found.', 'danger')
+        return redirect(url_for('homepage.show_main_page'))
+
+    do_logout()
+
+    db.session.delete(user)
+    db.session.commit()
+
+    flash("Profile deleted successfully!", "success")
+    return redirect(url_for('homepage.show_main_page'))
+
+
+@users_bp.route('/edit_profile', methods=["GET", "POST"])
+def edit_profile():
+    """Edit profile for current user."""
+    if 'curr_user' not in session:
+        flash('Please log in to access your profile', 'danger')
+        return redirect(url_for('auth.login_user'))
+
+    user = User.query.get(session['curr_user'])
+    if not user:
+        flash('User not found.', 'danger')
+        return redirect(url_for('homepage.show_main_page'))
+
+    form = EditUserForm(obj=user)
 
     if form.validate_on_submit():
-        # Verify the password
-        if not bcrypt.check_password_hash(g.user.password, form.password.data):
-            flash('Invalid password', 'danger')
-            return redirect(url_for('homepage'))
+        # Validate the current password
+        if not bcrypt.check_password_hash(user.password, form.password_current.data):
+            flash("Invalid current password", "danger")
+            return redirect(url_for('users.edit_profile'))
 
-            # Update user information
-        g.user.username = form.username.data
-        g.user.email = form.email.data
-        g.user.image_url = form.image_url.data
-        g.user.header_image_url = form.header_image_url.data
+        # If current password is correct, update the user's information
+        user.username = form.username.data
+        user.email = form.email.data
+        if form.password.data:
+            user.password = bcrypt.generate_password_hash(form.password.data).decode('UTF-8')
 
         db.session.commit()
+        flash("Profile updated successfully!", "success")
+        return redirect(url_for('homepage.show_main_page'))
 
-        flash('Profile updated successfully!', 'success')
-        return redirect(url_for('profile', user_id=user.id))
-
-    return render_template('users/show_user_profile.html', form=form, user=g.user)
+    return render_template('users/edit_profile_form.html', form=form, user=user)
