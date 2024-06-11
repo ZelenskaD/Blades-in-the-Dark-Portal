@@ -1,28 +1,49 @@
 {% extends "home/basic.html" %}
 
-
 {% block title %}
 Create Account - Blades In The Dark
 {% endblock %}
 
 {% block content %}
 <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-  <form class="sign-form" action="{{ url_for('auth.show_sign_in_form') }}" id="sign" method="post" style="padding: 20px; margin: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 100%; max-width: 400px;">
+  <form class="sign-form" action="{{ url_for('auth.show_sign_up_form') }}" id="sign" method="post" style="padding: 20px; margin: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 100%; max-width: 400px;">
     <h2 class="text-center">Forge Your Path in the Shadows</h2>
     {{ form.hidden_tag() }}
     <div class="form-group">
-      {{ form.username.label }}:
+      {{ form.username.label }}
       {{ form.username(class="form-control") }}
+      {% if form.username.errors %}
+        <div class="text-danger">
+          {% for error in form.username.errors %}
+            <span>{{ error }}</span><br>
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
     <div class="form-group">
-      {{ form.email.label }}:
+      {{ form.email.label }}
       {{ form.email(class="form-control") }}
+      {% if form.email.errors %}
+        <div class="text-danger">
+          {% for error in form.email.errors %}
+            <span>{{ error }}</span><br>
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
     <div class="form-group">
-      {{ form.password.label }}:
+      {{ form.password.label }}
       {{ form.password(class="form-control") }}
+      {% if form.password.errors %}
+        <div class="text-danger">
+          {% for error in form.password.errors %}
+            <span>{{ error }}</span><br>
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
     <button type="submit" class="btn btn-primary btn-block">Embrace the Darkness</button>
   </form>
 </div>
 {% endblock %}
+

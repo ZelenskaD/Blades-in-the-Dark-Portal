@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, flash, session, g, Blueprint
+from flask import render_template, redirect, url_for, flash, session, g, Blueprint, flash
 from sqlalchemy.exc import IntegrityError
 
 from requests.auth_forms import SignUpForm, LoginForm
@@ -30,7 +30,7 @@ def do_logout():
 
 
 @auth_bp.route('/signup', methods=['GET', 'POST'])
-def show_sign_in_form():
+def show_sign_up_form():
     import os
     print("Current Working Directory:", os.getcwd())
     print("Expected Template Path:", os.path.join(os.getcwd(), 'templates/auth/sign_up_form.html'))
@@ -49,6 +49,9 @@ def show_sign_in_form():
 
         except IntegrityError:
             flash("Username already taken", 'danger')
+            return render_template('auth/sign_up_form.html', form=form)
+        except Exception as e:
+            flash(f"An error occurred: {str(e)}", 'danger')
             return render_template('auth/sign_up_form.html', form=form)
 
     return render_template('auth/sign_up_form.html', form=form)
@@ -75,7 +78,7 @@ def logout():
     if CURR_USER_KEY in session:
         del session[CURR_USER_KEY]
     flash('Successfully logged out!', 'success')
-    return redirect(url_for('login_user'))
+    return redirect(url_for('homepage.show_main_page'))
 
 
 

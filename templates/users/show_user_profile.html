@@ -1,0 +1,15 @@
+{% extends 'home/basic.html' %}
+{% block content %}
+    <div class="header">
+        <h1>Welcome to your profile, @{{ g.user.username }}!</h1>
+    </div>
+    <div class="profile-container">
+        <img src="{{ url_for('static', filename='default_profile.png') }}" alt="Profile Picture" class="profile-picture">
+        <div class="username">@{{ g.user.username }}</div>
+        <div class="button-container">
+            <a href="{{ url_for('users.edit_profile') }}" class="btn btn-edit">Edit Profile</a>
+            <a href="{{ url_for('users.delete_profile') }}" class="btn btn-delete">Delete Profile</a>
+        </div>
+    </div>
+{% endblock %}
+

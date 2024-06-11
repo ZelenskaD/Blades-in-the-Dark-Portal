@@ -127,3 +127,34 @@ body {
      background-color: rgba(0, 0, 0, 0.5);
      color: white;
 }
+
+/*USER PROFILE*/
+.header {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Gothic A1', sans-serif; /* Ensure you have this font or replace with another Gothic font */
+}
+
+.profile-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.profile-picture {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.username {
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+.btn-edit, .btn-delete {
+    margin: 10px;
+}
