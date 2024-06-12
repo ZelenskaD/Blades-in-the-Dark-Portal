@@ -1,0 +1,37 @@
+{% extends 'home/basic.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-6">
+      <h2 class="join-message">Edit Your Profile</h2>
+      <form method="POST" id="user_form">
+        {{ form.hidden_tag() }}
+
+        {% for field in form if field.widget.input_type != 'hidden' %}
+          <div class="form-group">
+            {{ field.label }}
+            {% for error in field.errors %}
+              <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            {{ field(placeholder=field.label.text, class="form-control") }}
+          </div>
+        {% endfor %}
+
+        <div class="edit-btn-area">
+          <button class="btn btn-success">Save Changes</button>
+          <a href="{{ url_for('homepage.show_main_page') }}" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+      </form>
+
+      <!-- Form to Delete Profile -->
+      <form method="POST" action="{{ url_for('users.delete_profile') }}" style="margin-top: 20px;">
+        <button class="btn btn-danger" type="submit">Delete Profile</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+

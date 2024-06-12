@@ -1,0 +1,24 @@
+{% extends "home/basic.html" %}
+{% block title %}
+Welcome Page
+{% endblock %}
+
+{% block content %}
+{% if not g.user %}
+<div class="hero">
+    <h4>Welcome to</h4>
+    <h1>Duskvol</h1>
+    <div class="row justify-content-md-center">
+        <div class="col-md-6 box">
+            <h4>Create your own character, make new campaigns, meet new people and explore the World of Shadows together with friends!</h4>
+        </div>
+    </div>
+    <div class="button-container">
+        <a href="{{ url_for('auth.show_sign_up_form') }}" class="btn btn-primary">Sign Up</a>
+    </div>
+</div>
+{% else %}
+    <h4>Welcome Back!</h4>
+{% endif %}
+{% endblock %}
+

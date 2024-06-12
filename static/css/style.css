@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap");
+
+body {
+  /*background-image: url('../back.jpeg');*/
+  background-color: #050a13;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.hero {
+  height: 94vh;
+  background-image: url("../image/blades_background_hd.png");
+  background-size: cover;
+  background-position: top;
+}
+
+.dropdown-item {
+  background-color: #5684a9;
+  color: white;
+  padding: 10px;
+  border: 1px solid #ffffff; /* White border */
+  border-radius: 5px; /* Adjust the radius as needed */
+  margin-bottom: 5px; /* Space between items */
+}
+.custom-navbar {
+  background-color: #1d3853; /* Custom background color */
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+  color: white; /* White text */
+}
+
+.custom-navbar .nav-link:hover {
+  color: #74a5c3; /* Slightly lighter on hover */
+}
+
+.custom-navbar .brand-logo {
+  width: 30px; /* Adjust the width as needed */
+  height: 30px; /* Adjust the height as needed */
+  margin-right: 10px; /* Space between logo and text */
+}
+
+.profile-pic {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+h1,
+h4 {
+  font-family: "Sedan SC", serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+}
+
+.hero h4 {
+  padding-top: 100px;
+  font-size: 4em;
+  text-align: center;
+}
+
+.hero h1 {
+  text-align: center;
+  font-size: 8em;
+  margin-top: 40px;
+}
+.box {
+  text-align: center;
+}
+
+.box h4 {
+  text-align: center;
+  font-size: 2em;
+  color: #b1e3fa;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px; /* Adjust padding to reduce the height */
+  border-radius: 10px; /* Adjust border radius as needed */
+  display: inline-block; /* Make the box fit the content */
+  border: 2px solid #b1e3fa; /* Add border with color */
+}
+
+.btn-primary {
+  background-color: #1d3853; /* Custom background color */
+  border: 2px solid #b1e3fa; /* Custom border color */
+  color: #b9e9fd; /* Custom text color */
+  padding: 10px 20px; /* Adjust padding as needed */
+  font-size: 1em; /* Adjust font size as needed */
+  border-radius: 5px; /* Adjust border radius as needed */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  text-align: center;
+  text-decoration: none; /* Remove underline from links */
+  display: inline-block; /* Ensure the button respects padding */
+}
+.button-container {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background-color: #a1d3ea; /* Slightly darker color on hover */
+  border: 2px solid #a1d3ea; /* Matching border color on hover */
+}
+
+/*SIGN UP FORM*/
+
+.sign-form {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+/*LOGIN FORM*/
+
+.login-form {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+/*USER PROFILE*/
+.header {
+  text-align: center;
+  margin-top: 20px;
+  font-family: "Gothic A1", sans-serif; /* Ensure you have this font or replace it with another Gothic font */
+}
+
+.header-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  margin-top: -20px;
+}
+.card-hero {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.card-image {
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  border: 3px solid white;
+}
+
+.profile-info {
+  margin-top: -50px;
+  padding: 10px;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+.btn-edit,
+.btn-delete {
+  margin: 5px;
+}
+
+.mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+.container {
+  margin-top: -20px;
+}
+
+/* Edit Profile Form Styles */
+
+#user_form {
+  background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
+  color: white;
+  border: 1px solid #5684a9; /* Box border */
+  border-radius: 10px; /* Border radius */
+  padding: 20px; /* Padding inside the box */
+}
+
+#user_form .form-group {
+  margin-bottom: 20px;
+}
+
+.edit-btn-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-success,
+.btn-outline-secondary {
+  width: 48%;
+}
+
+.alert-container {
+  position: fixed;
+  top: 60px; /* Adjust the top value as needed */
+  right: 20px; /* Adjust the right value as needed */
+  z-index: 1050; /* Ensure the alert is on top of other content */
+}
