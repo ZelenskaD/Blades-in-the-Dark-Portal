@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Blades in the Dark{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
@@ -29,8 +30,8 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Participating Campaigns</a>
                         <a class="dropdown-item" href="#">Join a Campaign</a>
-                        <a class="dropdown-item" href="#">Create Campaign</a>
-                        <a class="dropdown-item" href="#">My Campaigns</a>
+                        <a class="dropdown-item" href="{{ url_for('campaigns.create_campaign') }}">Create Campaign</a>
+                        <a class="dropdown-item" href="{{ url_for('campaigns.my_campaigns') }}">My Campaigns</a>
                     </div>
                 </li>
             </ul>
@@ -78,7 +79,12 @@
             {% endif %}
         {% endwith %}
 
-    <div class="hero">
+{#    <div class="hero">#}
+{##}
+{#        {% block content %}{% endblock %}#}
+{##}
+{#    </div>#}
+        <div class="hero {% block hero_class %}{% endblock %}">
         {% block content %}{% endblock %}
     </div>
 

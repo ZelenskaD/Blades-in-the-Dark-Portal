@@ -1,0 +1,51 @@
+{% extends "home/basic.html" %}
+
+{% block title %}
+Create Campaign - Blades In The Dark
+{% endblock %}
+
+{% block hero_class %}
+campaign-background
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="campaign-container p-4 bg-light rounded">
+        <h2 class="text-center">Create Campaign</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert-container">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('campaigns.create_campaign') }}">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.name.label(class="form-label") }}
+                {{ form.name(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.description.label(class="form-label") }}
+                {{ form.description(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.campaign_picture.label(class="form-label") }}
+                {{ form.campaign_picture(class="form-control") }}
+            </div>
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-success">Create Campaign</button>
+                <a href="{{ url_for('campaigns.my_campaigns') }}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

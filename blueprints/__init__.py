@@ -6,11 +6,13 @@ def register_blueprints(blades_app: Flask) -> Flask:
     from blueprints.homepage_routes import homepage_bp
     from blueprints.auth_routes import auth_bp
     from blueprints.user_routes import users_bp
+    from blueprints.campaign_routes import campaigns_bp
 
     # Register Blueprints
     blades_app.register_blueprint(homepage_bp, url_prefix='/')
     blades_app.register_blueprint(auth_bp, url_prefix='/auth')
     blades_app.register_blueprint(users_bp, url_prefix='/users')
+    blades_app.register_blueprint(campaigns_bp, url_prefix='/campaigns')
 
     return blades_app
 
