@@ -5,6 +5,7 @@ from blueprints import register_blueprints
 from config import config
 from schemas import connect_db
 
+
 app = Flask(__name__)
 
 app.config.from_object(config)

@@ -5,6 +5,7 @@ from requests.campaign_forms import AddCampaignForm, EditCampaignForm
 from schemas import db
 from schemas.campaign_models import Campaign
 from schemas.user_models import User
+from schemas.session_models import Session
 
 campaigns_bp = Blueprint('campaigns', __name__, template_folder='templates/campaigns')
 
@@ -27,8 +28,8 @@ def create_campaign():
         campaign = Campaign(
             name=form.name.data,
             description=form.description.data,
-            campaign_picture=campaign_picture,
-            user_id=user.id  # Ensure you link the campaign to the current user
+            campaign_picture=campaign_picture,  # Ensure you link the campaign to the current user
+            creator_id=user.id,
         )
         db.session.add(campaign)
         db.session.commit()
@@ -44,7 +45,7 @@ def edit_campaign(campaign_id):
     form = EditCampaignForm(obj=campaign)
 
     if form.validate_on_submit():
-        if 'curr_user' not in session or session['curr_user'] != campaign.user_id:
+        if 'curr_user' not in session or session['curr_user'] != campaign.creator_id:
             flash('You do not have permission to edit this campaign', 'danger')
             return redirect(url_for('homepage.show_main_page'))
 
@@ -71,9 +72,10 @@ def delete_campaign(campaign_id):
 @campaigns_bp.route('/campaigns/<int:campaign_id>')
 def show_campaign(campaign_id):
     campaign = Campaign.query.get_or_404(campaign_id)
-    # sessions = Session.query.filter_by(campaign_id=campaign_id).all()
+    sessions = Session.query.filter_by(campaign_id=campaign_id).order_by(Session.created_at.desc()).all()
     # return render_template('view_campaign.html', campaign=campaign, sessions=sessions)
-    return render_template('campaigns/show_campaign.html', campaign=campaign)
+    return render_template('campaigns/show_campaign.html', campaign=campaign, sessions=sessions,
+                           )
 
 
 @campaigns_bp.route('/my_campaigns', methods=['GET'])
@@ -88,7 +90,7 @@ def my_campaigns():
         flash('User not found', 'danger')
         return redirect(url_for('auth.login_user'))
 
-    campaigns = Campaign.query.filter_by(user_id=user.id).all()
+    campaigns = Campaign.query.filter_by(creator_id=user.id).all()
     return render_template('campaigns/my_campaigns.html', campaigns=campaigns)
 
 

@@ -1,0 +1,24 @@
+{% extends "home/basic.html" %}
+
+{% block title %}
+Edit Session
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Edit Session</h2>
+    <form method="POST" action="{{ url_for('session.edit_session', session_id=session.id) }}">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            <label for="title" class="form-label">Session Title</label>
+            {{ form.title(class="form-control", id="title") }}
+        </div>
+        <div class="mb-3">
+            <label for="notes" class="form-label">Notes</label>
+            {{ form.notes(class="form-control", id="notes") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Update Session</button>
+    </form>
+</div>
+{% endblock %}
+

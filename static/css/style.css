@@ -404,14 +404,8 @@ p{
     border: 3px solid #1D3853; /* Border color */
     border-radius: 10px;
 }
-#name-camp {
-    font-size: 3em;
 
-}
-#description{
-    font-size: 2em;
 
-}
 
 
 
@@ -421,4 +415,21 @@ p{
 
 .row {
     padding-top: 60px;
+}
+
+.description-campaign {
+    border: 3px solid #1D3853; /* Border color */
+    border-radius: 10px;
+
+    color: white;
+ width: 600px;
+    height: auto;
+}
+
+
+.name-campaign{
+    border: 3px solid #1d3853; /* Border color */
+    border-radius: 10px;
+    background-color:white;
+
 }

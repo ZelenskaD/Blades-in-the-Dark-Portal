@@ -1,33 +1,19 @@
 from schemas import db, bcrypt
+from schemas.user_campaign_participation_models import UserCampaignParticipation
 
 
 class User(db.Model):
-    """User in the system."""
+    """User model."""
 
     __tablename__ = 'users'
 
-    id = db.Column(
-        db.Integer,
-        primary_key=True,
-    )
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(128), nullable=False)
+    email = db.Column(db.String(128), nullable=False, unique=True)
+    password_hash = db.Column(db.String(128), nullable=False)
 
-    email = db.Column(
-        db.Text,
-        nullable=False,
-        unique=True,
-    )
-
-    username = db.Column(
-        db.Text,
-        nullable=False,
-        unique=True,
-    )
-
-    password = db.Column(
-        db.Text,
-        nullable=False,
-    )
-    # campaigns = db.relationship('Campaign', backref='owner', lazy=True)
+    campaigns = db.relationship('Campaign', secondary='user_campaign_participations', back_populates='users')
+    characters = db.relationship('Character', back_populates='user', cascade="all, delete-orphan")
 
     def __repr__(self):
         return f"<User #{self.id}: {self.username}, {self.email}>"
@@ -38,30 +24,22 @@ class User(db.Model):
 
         Hashes password and adds user to system.
         """
-
         hashed_pwd = bcrypt.generate_password_hash(password).decode('UTF-8')
-
         user = User(
             username=username,
             email=email,
-            password=hashed_pwd,
+            password_hash=hashed_pwd,
         )
-
         db.session.add(user)
-        db.session.commit()  # Commit the new user to the database
+        db.session.commit()
         return user
 
     @classmethod
     def authenticate(cls, username, password):
         """Find user with `username` and `password`."""
-
         user = cls.query.filter_by(username=username).first()
-
-        if user:
-            is_auth = bcrypt.check_password_hash(user.password, password)
-            if is_auth:
-                return user
-
+        if user and bcrypt.check_password_hash(user.password_hash, password):
+            return user
         return False
 
     @staticmethod

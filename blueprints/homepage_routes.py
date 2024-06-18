@@ -18,7 +18,9 @@ homepage_bp = Blueprint('homepage', __name__, template_folder=template_folder_pa
 
 @homepage_bp.route('/')
 def show_main_page():
-    return render_template('homepage.html')
+    from schemas.user_models import User # Import within the function to avoid circular import issues
+    users = User.query.all()
+    return render_template('homepage.html', users=users)
 
 
 
