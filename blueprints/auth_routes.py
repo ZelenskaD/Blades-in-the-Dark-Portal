@@ -64,6 +64,7 @@ def login_user():
         user = User.authenticate(form.username.data, form.password.data)
         if user:
             do_login(user)
+            session['curr_user'] = user.id
             flash(f"Welcome back, {user.username}!", "success")
             return redirect(url_for('homepage.show_main_page'))  # Use endpoint name
         else:

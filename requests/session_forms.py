@@ -11,3 +11,5 @@ class AddNewSession(FlaskForm):
 class EditSessionForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(), Length(min=2, max=128)])
     notes = TextAreaField('Notes', validators=[DataRequired(), Length(max=200000)])
+
+

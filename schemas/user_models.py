@@ -1,4 +1,5 @@
 from schemas import db, bcrypt
+
 from schemas.user_campaign_participation_models import UserCampaignParticipation
 
 

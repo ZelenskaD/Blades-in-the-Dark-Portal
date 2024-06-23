@@ -24,11 +24,11 @@ def create_campaign():
             flash('User not found', 'danger')
             return redirect(url_for('auth.login_user'))
 
-        campaign_picture = form.campaign_picture.data or '/backgrounds/default-card.png'
+        campaign_picture = form.campaign_picture.data or 'backgrounds/default-card.png'
         campaign = Campaign(
             name=form.name.data,
             description=form.description.data,
-            campaign_picture=campaign_picture,  # Ensure you link the campaign to the current user
+            campaign_picture=campaign_picture,
             creator_id=user.id,
         )
         db.session.add(campaign)
@@ -60,7 +60,7 @@ def edit_campaign(campaign_id):
     return render_template('campaigns/edit_campaign.html', form=form, campaign=campaign)
 
 
-@campaigns_bp.route('/campaigns/delete/<int:campaign_id>', methods=['GET'])
+@campaigns_bp.route('/delete/<int:campaign_id>', methods=['GET'])
 def delete_campaign(campaign_id):
     campaign = Campaign.query.get_or_404(campaign_id)
     db.session.delete(campaign)
@@ -69,7 +69,7 @@ def delete_campaign(campaign_id):
     return redirect(url_for('campaigns.my_campaigns'))
 
 
-@campaigns_bp.route('/campaigns/<int:campaign_id>')
+@campaigns_bp.route('/<int:campaign_id>')
 def show_campaign(campaign_id):
     campaign = Campaign.query.get_or_404(campaign_id)
     sessions = Session.query.filter_by(campaign_id=campaign_id).order_by(Session.created_at.desc()).all()
@@ -94,9 +94,34 @@ def my_campaigns():
     return render_template('campaigns/my_campaigns.html', campaigns=campaigns)
 
 
-@campaigns_bp.route('/campaigns/leave/<int:campaign_id>', methods=['POST'])
+@campaigns_bp.route('/leave/<int:campaign_id>', methods=['POST'])
 def leave_campaign(campaign_id):
     campaign = Campaign.query.get_or_404(campaign_id)
     # Logic for leaving the campaign, e.g., removing the user from the campaign
     flash('You have left the campaign.', 'success')
     return redirect(url_for('campaigns.my_campaigns'))
+
+
+@campaigns_bp.route('/join')
+def join_campaigns():
+    page = request.args.get('page', 1, type=int)
+    per_page = 20
+
+    user_id = session.get('curr_user')
+    print(f"user_id from session: {user_id}")  # Debug print
+
+    if not user_id:
+        flash('Please log in to view campaigns', 'danger')
+        return redirect(url_for('auth.login_user'))
+
+    try:
+        pagination = Campaign.query.filter(Campaign.creator_id != user_id).paginate(page, per_page, False)
+        campaigns = pagination.items
+        print(f"Campaigns retrieved: {campaigns}")  # Debug print
+
+    except Exception as e:
+        print(f"Error: {e}")  # Debug print
+        flash(f"An error occurred: {e}", "danger")
+        return redirect(url_for('homepage.show_main_page'))
+
+    return render_template('campaigns/join_campaign.html', campaigns=campaigns, pagination=pagination, user_id=user_id)

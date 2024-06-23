@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap");
 
 body {
-  /*background-image: url('../back.jpeg');*/
   background-color: #050a13;
   background-size: contain;
   background-repeat: no-repeat;
@@ -9,23 +8,20 @@ body {
   font-family: "Sedan SC", serif;
 }
 
-.profile-pic {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
+.hero {
+    background-image: url("../image/blades_background_hd.png");
+    background-size: cover;
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+
 }
 
-.hero {
-  height: 94vh;
-  background-image: url("../image/blades_background_hd.png");
-  background-size: cover;
-  background-position: top;
-}
-.hero {
-    height: 94vh;
-    background-size: cover;
-    background-position: top;
+.profile-pic {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .default-background {
@@ -40,11 +36,18 @@ body {
 .dropdown-item {
   background-color: #5684a9;
   color: white;
-  padding: 10px;
+  /*padding: 10px;*/
   border: 1px solid #ffffff; /* White border */
   border-radius: 5px; /* Adjust the radius as needed */
-  margin-bottom: 5px; /* Space between items */
+  /*margin-bottom: 5px; !* Space between items *!*/
 }
+
+.dropdown-menu {
+    padding: 0;
+    margin: 0;
+}
+
+
 .custom-navbar {
   background-color: #1d3853; /* Custom background color */
 }
@@ -64,11 +67,7 @@ body {
   margin-right: 10px; /* Space between logo and text */
 }
 
-.profile-pic {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
+
 
 h1,
 h4 {
@@ -191,38 +190,33 @@ h4 {
 
 /* Edit Profile Form Styles */
 
-#user_form {
-  background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
+.edit-profile{
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  border: 1px solid #5684a9; /* Box border */
-  border-radius: 10px; /* Border radius */
-  padding: 20px; /* Padding inside the box */
+  border: 1px solid #5684a9;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 80px;
+  background-color: #8da6ce;
 }
 
-#user_form .form-group {
-  margin-bottom: 20px;
-}
+
 
 .edit-btn-area {
   display: flex;
   justify-content: space-between;
 }
 
-.btn-success,
-.btn-outline-secondary {
-  width: 48%;
-}
+
 
 .alert-container {
   position: fixed;
-  top: 60px; /* Adjust the top value as needed */
-  right: 20px; /* Adjust the right value as needed */
-  z-index: 1050; /* Ensure the alert is on top of other content */
+  top: 60px;
+  right: 20px;
+  z-index: 1050;
 }
 
-
 /* Create/edit campaignForm Styles */
-
 
 .campaign{
   height: 100vh;
@@ -231,6 +225,7 @@ h4 {
   background-position: top;
 
 }
+
 .campaign-container h2 {
     text-align: center;
     font-weight: bold;
@@ -252,7 +247,7 @@ h4 {
 
 .campaign-container .form-control {
     border-radius: 5px;
-      border: 1px solid #217996 ;
+      border: 1px solid #83B1D3 ;
 
 
 }
@@ -264,7 +259,7 @@ h4 {
 
 
 .campaign-container .btn-success {
-    margin-right: 10px;
+
     background-color:#5684A9;
       border: 1px solid #ACFAFD ;
 
@@ -293,7 +288,6 @@ h4 {
     color: #217996;
     font-size: 2em; /* Adjust the size as needed */
     margin-top: 20px; /* Adds margin above */
-    margin-right: 10px;
     padding: 15px; /* Adds padding inside the box */
     background-color: #f8f9fa; /* Background color */
     border: 1px solid #dee2e6; /* Border color */
@@ -303,7 +297,28 @@ h4 {
     text-align: center;
 }
 
+
+ .edit{
+     background-color:white;
+      margin: 20px;
+     padding: 30px;
+     border: 1px solid #6EC0D8; /* Border color */
+     border-radius: 10px; /* Rounded corners */
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+ }
+ .edit, h2{
+     color:#1D3853 ;
+ }
+
+/*.btn-success{*/
+/*    background-color: #83B1D3;;*/
+/*}*/
+
  /*CARDS CAMPAIGN*/
+
+.campaign-list {
+    margin-top: 20px;
+}
 
 .card {
     margin-bottom: 20px;
@@ -379,57 +394,139 @@ h4 {
 
 /* SHOW CAMPAIGN PAGE*/
 
-.p-4.bg-light.rounded {
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.name-campaign {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.description-box {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #1D3853;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    max-width: 800px;
+    max-height: 150px;
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list-group-item {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'YourFontFamily', sans-serif; /* Replace 'YourFontFamily' with your actual font family */
     margin-bottom: 20px;
 }
 
-.description-container, .crew-container {
-    background-color: #6EC0D8; /* Light background color */
-
-    border: 3px solid #1D3853; /* Border color */
-    border-radius: 20px; /* Border radius */
-    width: 100%; /* Full width */
-    color: white;
-    height:auto; /* Adjust height as needed */
-    font-size: small;
-
-}
-
-
-.description-container, h4{
-    margin-top: 10px;
-    color: #1F4661;
-}
-p{
-    border: 3px solid #1D3853; /* Border color */
-    border-radius: 10px;
-}
-
-
-
-
-
-.btn {
+.list-group-item span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: normal;
+    display: block;
     margin-bottom: 10px;
 }
 
-.row {
-    padding-top: 60px;
+.list-group-item p {
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: "Sedan SC", serif;
 }
 
-.description-campaign {
-    border: 3px solid #1D3853; /* Border color */
-    border-radius: 10px;
+.list-group-item div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.list-group-item a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.list-group-item a:hover {
+    text-decoration: underline;
+}
+
+.list-group-item button {
+    color: red;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.list-group-item button:hover {
+    color: darkred;
+}
+
+
+.date{
+    font-size: 0.8em;
+}
+
+/*NEW SESSION STYLE*/
+
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-header {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #1D3853;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #16334a;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+
+/*JOIN CAMPAIGN*/
+
+ .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: white;
- width: 600px;
-    height: auto;
+    text-align: center;
 }
 
-
-.name-campaign{
-    border: 3px solid #1d3853; /* Border color */
-    border-radius: 10px;
-    background-color:white;
-
-}

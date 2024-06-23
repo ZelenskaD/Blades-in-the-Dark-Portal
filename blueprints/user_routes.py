@@ -56,19 +56,21 @@ def edit_profile():
     form = EditUserForm(obj=user)
 
     if form.validate_on_submit():
-        # Validate the current password
-        if not bcrypt.check_password_hash(user.password, form.password_current.data):
-            flash("Invalid current password", "danger")
-            return redirect(url_for('users.edit_profile'))
+        # Validate the current password if a new password is provided
+        if form.new_password.data:
+            if not form.current_password.data or not bcrypt.check_password_hash(user.password_hash, form.current_password.data):
+                flash("Invalid current password", "danger")
+                return redirect(url_for('users.edit_profile'))
 
-        # If current password is correct, update the user's information
+            # If current password is correct, update the user's password
+            user.password_hash = bcrypt.generate_password_hash(form.new_password.data).decode('UTF-8')
+
+        # Update the user's information
         user.username = form.username.data
         user.email = form.email.data
-        if form.password.data:
-            user.password = bcrypt.generate_password_hash(form.password.data).decode('UTF-8')
 
         db.session.commit()
-        flash("Profile updated successfully!", "success")
+        flash("Profile updated successfully!", 'success')
         return redirect(url_for('homepage.show_main_page'))
 
     return render_template('users/edit_profile_form.html', form=form, user=user)

@@ -13,9 +13,11 @@ my-campaign-background
 <div class="container mt-5">
     <div class="my-camp-container">
         <h2 class="camp-text text-center mb-4">My Campaigns</h2>
+    </div>
+<div class="container campaign-list">
         <div class="row justify-content-left">
             {% for campaign in campaigns %}
-            <div class="col-md-3 mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <a href="{{ url_for('campaigns.show_campaign', campaign_id=campaign.id) }}" class="text-decoration-none text-dark" style="display: block;">
                         {% if campaign.campaign_picture.startswith('http') %}
@@ -40,8 +42,8 @@ my-campaign-background
             </div>
             {% endfor %}
         </div>
-    </div>
 </div>
+    </div>
 
 {% endblock %}
 

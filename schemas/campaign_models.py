@@ -13,7 +13,7 @@ class Campaign(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
     description = db.Column(db.String(2000), nullable=True)
-    campaign_picture = db.Column(db.String(1000), default="/backgrounds/default-card.jpg")
+    campaign_picture = db.Column(db.String(1000), default="/backgrounds/default-card.png")
 
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     creator = db.relationship('User', backref='created_campaigns')
