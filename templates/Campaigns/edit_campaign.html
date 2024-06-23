@@ -1,0 +1,51 @@
+{% extends "home/basic.html" %}
+
+{% block title %}
+Edit Campaign - Blades In The Dark
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row edit">
+        <div class="col-md-6">
+            <img src="{{ campaign.campaign_picture }}" alt="{{ campaign.name }}" class="img-fluid mb-3" style="max-height: 300px; width: auto;border: 1px solid #6EC0D8;  border-radius: 10px;">
+        </div>
+        <div class="col-md-6">
+            <h2>Edit Campaign</h2>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="alert-container">
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            <form method="POST" action="{{ url_for('campaigns.edit_campaign', campaign_id=campaign.id) }}">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.name.label(class="form-label") }}
+                    {{ form.name(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.description.label(class="form-label") }}
+                    {{ form.description(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.campaign_picture.label(class="form-label") }}
+                    {{ form.campaign_picture(class="form-control") }}
+                </div>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <a href="{{ url_for('campaigns.my_campaigns') }}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

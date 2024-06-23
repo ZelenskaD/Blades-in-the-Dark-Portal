@@ -1,35 +1,53 @@
 @import url("https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap");
 
 body {
-  /*background-image: url('../back.jpeg');*/
   background-color: #050a13;
   background-size: contain;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  font-family: "Sedan SC", serif;
+}
+
+.hero {
+    background-image: url("../image/blades_background_hd.png");
+    background-size: cover;
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+
 }
 
 .profile-pic {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.hero {
-  height: 94vh;
-  background-image: url("../image/blades_background_hd.png");
-  background-size: cover;
-  background-position: top;
+.default-background {
+    background-image: url("../backgrounds/default_back.jpg");
 }
+
+.campaign-background {
+    background-image: url("../backgrounds/campaign_back.jpg");
+}
+
 
 .dropdown-item {
   background-color: #5684a9;
   color: white;
-  padding: 10px;
+  /*padding: 10px;*/
   border: 1px solid #ffffff; /* White border */
   border-radius: 5px; /* Adjust the radius as needed */
-  margin-bottom: 5px; /* Space between items */
+  /*margin-bottom: 5px; !* Space between items *!*/
 }
+
+.dropdown-menu {
+    padding: 0;
+    margin: 0;
+}
+
+
 .custom-navbar {
   background-color: #1d3853; /* Custom background color */
 }
@@ -49,11 +67,7 @@ body {
   margin-right: 10px; /* Space between logo and text */
 }
 
-.profile-pic {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
+
 
 h1,
 h4 {
@@ -64,7 +78,7 @@ h4 {
 }
 
 .hero h4 {
-  padding-top: 100px;
+  padding-top: 10px;
   font-size: 4em;
   text-align: center;
 }
@@ -176,31 +190,343 @@ h4 {
 
 /* Edit Profile Form Styles */
 
-#user_form {
-  background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
+.edit-profile{
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  border: 1px solid #5684a9; /* Box border */
-  border-radius: 10px; /* Border radius */
-  padding: 20px; /* Padding inside the box */
+  border: 1px solid #5684a9;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 80px;
+  background-color: #8da6ce;
 }
 
-#user_form .form-group {
-  margin-bottom: 20px;
-}
+
 
 .edit-btn-area {
   display: flex;
   justify-content: space-between;
 }
 
-.btn-success,
-.btn-outline-secondary {
-  width: 48%;
-}
+
 
 .alert-container {
   position: fixed;
-  top: 60px; /* Adjust the top value as needed */
-  right: 20px; /* Adjust the right value as needed */
-  z-index: 1050; /* Ensure the alert is on top of other content */
+  top: 60px;
+  right: 20px;
+  z-index: 1050;
 }
+
+/* Create/edit campaignForm Styles */
+
+.campaign{
+  height: 100vh;
+  background-image: url("../backgrounds/campaign_back.jpg");
+  background-size: cover;
+  background-position: top;
+
+}
+
+.campaign-container h2 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    width: 500px;
+    color:#217996;
+
+}
+
+
+.campaign-container .form-group {
+    margin-bottom: 15px;
+   font-weight: bold;
+    width: 500px;
+    color:#1D3853;
+    font-size: 1.5em;
+
+}
+
+.campaign-container .form-control {
+    border-radius: 5px;
+      border: 1px solid #83B1D3 ;
+
+
+}
+.campaign-container .btn-outline-secondary {
+    border: 1px solid #ACFAFD ;
+
+    background-color:#3F4042;
+}
+
+
+.campaign-container .btn-success {
+
+    background-color:#5684A9;
+      border: 1px solid #ACFAFD ;
+
+}
+
+/* Campaigns Styles */
+
+.my-campaign-background {
+    background-image: url("../backgrounds/navy_blue_hue_image.jpg"); /* Update this path to your actual image path */
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.my-camp-container {
+    position: relative;
+    z-index: 1;
+
+}.camp-text {
+     font-weight: bold;
+    font-family: "Sedan SC", serif;
+    color: #217996;
+    font-size: 2em; /* Adjust the size as needed */
+    margin-top: 20px; /* Adds margin above */
+    padding: 15px; /* Adds padding inside the box */
+    background-color: #f8f9fa; /* Background color */
+    border: 1px solid #dee2e6; /* Border color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    justify-content: center;
+    text-align: center;
+}
+
+
+ .edit{
+     background-color:white;
+      margin: 20px;
+     padding: 30px;
+     border: 1px solid #6EC0D8; /* Border color */
+     border-radius: 10px; /* Rounded corners */
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+ }
+ .edit, h2{
+     color:#1D3853 ;
+ }
+
+/*.btn-success{*/
+/*    background-color: #83B1D3;;*/
+/*}*/
+
+ /*CARDS CAMPAIGN*/
+
+.campaign-list {
+    margin-top: 20px;
+}
+
+.card {
+    margin-bottom: 20px;
+    background-color: #1D3853; /* Dark theme background for cards */
+    color: white; /* Text color for better readability on dark background */
+    border: 1px solid #ACFAFD; /* Border color */
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Lift the card up */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.card h5 {
+    color: #ACFAFD; /* Title color */
+    text-align: center;
+}
+
+.card-img-top {
+    height: 200px;  /* Adjust the height as needed */
+    width: 100%;
+    object-fit: cover;  /* Ensures the image covers the entire area without distortion */
+}
+
+.card-title {
+    font-weight: bold;
+    font-family: "Sedan SC", serif;
+    text-align: center;
+    font-size: 2em;
+}
+.card-description{
+     color: white;
+     margin-right:5px;
+}
+.card-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.card-buttons .btn {
+    font-size: 0.8em;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.card-buttons .btn i {
+    margin-right: 5px;
+}
+
+.card-buttons .btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.card-buttons .btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+.card-body{
+    color:white;
+    padding:10px;
+    margin-top: 5px;
+    margin-right:5px;
+}
+
+/* SHOW CAMPAIGN PAGE*/
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.name-campaign {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.description-box {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #1D3853;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    max-width: 800px;
+    max-height: 150px;
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list-group-item {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'YourFontFamily', sans-serif; /* Replace 'YourFontFamily' with your actual font family */
+    margin-bottom: 20px;
+}
+
+.list-group-item span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: normal;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.list-group-item p {
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: "Sedan SC", serif;
+}
+
+.list-group-item div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-group-item a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.list-group-item a:hover {
+    text-decoration: underline;
+}
+
+.list-group-item button {
+    color: red;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.list-group-item button:hover {
+    color: darkred;
+}
+
+
+.date{
+    font-size: 0.8em;
+}
+
+/*NEW SESSION STYLE*/
+
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-header {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #1D3853;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #16334a;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+
+/*JOIN CAMPAIGN*/
+
+ .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+

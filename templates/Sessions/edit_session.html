@@ -1,0 +1,41 @@
+{% extends "home/basic.html" %}
+
+{% block title %}
+Edit Session
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Edit Session</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('session.edit_session', session_id=session.id) }}">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    <label for="title" class="form-label">Session Title</label>
+                    {{ form.title(class="form-control", id="title") }}
+                </div>
+                <div class="mb-3">
+                    <label for="notes" class="form-label">Notes</label>
+                    {{ form.notes(class="form-control", id="notes") }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Last Updated At</label>
+                    <input type="text" class="form-control" value="{{ session.updated_at.strftime('%b %d %H:%M') }}" disabled>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary me-2">Update Session</button>
+                    <a href="{{ url_for('campaigns.show_campaign', campaign_id=session.campaign_id) }}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
