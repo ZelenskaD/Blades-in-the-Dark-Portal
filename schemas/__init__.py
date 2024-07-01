@@ -6,7 +6,7 @@ bcrypt = Bcrypt()
 db = SQLAlchemy()
 
 from .campaign_models import Campaign
-from .character_models import Character
+from schemas.character_models import Character
 from .cohort_models import Cohort
 from .crew_models import Crew
 from .session_models import Session

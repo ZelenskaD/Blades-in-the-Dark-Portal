@@ -1,8 +1,8 @@
 
 from flask import Blueprint, render_template, redirect, url_for, session, flash, g, request
-from requests.campaign_forms import AddCampaignForm, EditCampaignForm
+from form_requests.campaign_forms import AddCampaignForm, EditCampaignForm
 
-from schemas import db
+from schemas import db, Character
 from schemas.campaign_models import Campaign
 from schemas.user_models import User
 from schemas.session_models import Session
@@ -72,10 +72,14 @@ def delete_campaign(campaign_id):
 @campaigns_bp.route('/<int:campaign_id>')
 def show_campaign(campaign_id):
     campaign = Campaign.query.get_or_404(campaign_id)
-    sessions = Session.query.filter_by(campaign_id=campaign_id).order_by(Session.created_at.desc()).all()
-    # return render_template('view_campaign.html', campaign=campaign, sessions=sessions)
+    character = Character.query.filter_by(campaign_id=campaign_id).all()  # Fetch characters for the campaign
+    sessions = Session.query.filter_by(campaign_id=campaign_id).all()
+
+    print(f"Campaign: {campaign}")
+    print(f"Characters: {character}")
+
     return render_template('campaigns/show_campaign.html', campaign=campaign, sessions=sessions,
-                           )
+                           characters=character)
 
 
 @campaigns_bp.route('/my_campaigns', methods=['GET'])
@@ -94,34 +98,72 @@ def my_campaigns():
     return render_template('campaigns/my_campaigns.html', campaigns=campaigns)
 
 
-@campaigns_bp.route('/leave/<int:campaign_id>', methods=['POST'])
-def leave_campaign(campaign_id):
-    campaign = Campaign.query.get_or_404(campaign_id)
-    # Logic for leaving the campaign, e.g., removing the user from the campaign
-    flash('You have left the campaign.', 'success')
-    return redirect(url_for('campaigns.my_campaigns'))
-
-
-@campaigns_bp.route('/join')
-def join_campaigns():
-    page = request.args.get('page', 1, type=int)
-    per_page = 20
-
+@campaigns_bp.route('/join_campaign', methods=['GET', 'POST'])
+def join_campaign():
     user_id = session.get('curr_user')
     print(f"user_id from session: {user_id}")  # Debug print
 
     if not user_id:
-        flash('Please log in to view campaigns', 'danger')
+        flash('Please log in to join campaigns', 'danger')
         return redirect(url_for('auth.login_user'))
 
-    try:
-        pagination = Campaign.query.filter(Campaign.creator_id != user_id).paginate(page, per_page, False)
-        campaigns = pagination.items
-        print(f"Campaigns retrieved: {campaigns}")  # Debug print
+    if request.method == 'POST':
+        campaign_id = request.form.get('campaign_id')
+        character_id = request.form.get('character_id')
 
-    except Exception as e:
-        print(f"Error: {e}")  # Debug print
-        flash(f"An error occurred: {e}", "danger")
-        return redirect(url_for('homepage.show_main_page'))
+        # Fetch the character and campaign from the database
+        character = Character.query.filter_by(id=character_id, user_id=g.user.id).first()
+        campaign = Campaign.query.get(campaign_id)
 
-    return render_template('campaigns/join_campaign.html', campaigns=campaigns, pagination=pagination, user_id=user_id)
+        if not character or not campaign:
+            flash('Invalid campaign ID or character.', 'danger')
+            return redirect(url_for('campaigns.join_campaign'))
+
+        # Add the character to the campaign
+        character.campaign_id = campaign.id
+        db.session.commit()
+
+        flash('Successfully joined the campaign!')
+        return redirect(url_for('campaigns.show_campaign', campaign_id=campaign_id))
+
+    # Get all characters created by the current user
+    characters = Character.query.filter_by(user_id=g.user.id, campaign_id=None).all()
+    campaigns = Campaign.query.all()  # Fetch all campaigns
+
+    return render_template('campaigns/join_campaign_form.html', characters=characters, campaigns=campaigns)
+
+
+
+@campaigns_bp.route('/leave_campaign/<int:character_id>', methods=['POST'])
+def leave_campaign(character_id):
+    user_id = session.get('curr_user')
+    print(f"user_id from session: {user_id}")  # Debug print
+    if not user_id:
+        flash('Please log in to join campaigns', 'danger')
+        return redirect(url_for('auth.login_user'))
+
+    character = Character.query.get_or_404(character_id)
+
+    # Ensure that the logged-in user owns the character
+    if character.user_id != g.user.id:
+        flash("You do not have permission to leave this campaign with this character.", "danger")
+        return redirect(url_for('campaigns.participating_campaigns'))
+
+    # Set the character's campaign_id to None (or delete character if necessary)
+    character.campaign_id = None
+    db.session.commit()
+
+    flash("Character has left the campaign.", "success")
+    return redirect(url_for('campaigns.participating_campaigns'))
+
+
+@campaigns_bp.route('/participating_campaigns')
+def participating_campaigns():
+    user_id = session.get('curr_user')
+    print(f"user_id from session: {user_id}")  # Debug print
+    if not user_id:
+        flash('Please log in to join campaigns', 'danger')
+        return redirect(url_for('auth.login_user'))
+    # Fetch campaigns that the current user is participating in
+    campaigns = Campaign.query.filter(Campaign.characters.any(user_id=g.user.id)).all()
+    return render_template('campaigns/participating_campaigns.html', campaigns=campaigns)

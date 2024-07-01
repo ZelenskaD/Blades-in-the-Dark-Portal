@@ -1,0 +1,28 @@
+{% extends "home/basic.html" %}
+
+{% block title %}
+My Characters - Blades In The Dark
+{% endblock %}
+
+{% block content %}
+<div class="all-chars container ">
+    <div class="my-char-container">
+        <h2 class="char-text text-center mt-4">My Characters</h2>
+    </div>
+    <div class="container character-list mt-1">
+        <div class="row justify-content-left">
+            {% for character in characters %}
+            <div class="col-md-4 ">
+                <div class="polaroid" onclick="window.location.href='{{ url_for('characters.show_character', character_id=character.id) }}'">
+                    <img src="{{ character.image if character.image else 'https://via.placeholder.com/150' }}" alt="{{ character.name }}">
+                    <div class="polaroid-caption">{{ character.name }}</div>
+                    <div class="pin-icon">📌</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

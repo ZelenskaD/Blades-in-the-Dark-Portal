@@ -5,7 +5,7 @@ Create Account - Blades In The Dark
 {% endblock %}
 
 {% block content %}
-<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+<div class="sign-up d-flex justify-content-center align-items-center">
   <form class="sign-form" action="{{ url_for('auth.show_sign_up_form') }}" id="sign" method="post" style="padding: 20px; margin: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 100%; max-width: 400px;">
     <h2 class="text-center">Forge Your Path in the Shadows</h2>
     {{ form.hidden_tag() }}

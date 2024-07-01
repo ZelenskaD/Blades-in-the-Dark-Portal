@@ -15,13 +15,14 @@ class Campaign(db.Model):
     description = db.Column(db.String(2000), nullable=True)
     campaign_picture = db.Column(db.String(1000), default="/backgrounds/default-card.png")
 
-    creator_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    creator_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
     creator = db.relationship('User', backref='created_campaigns')
 
-    characters = db.relationship('Character', backref='campaign_characters', lazy=True)
-    sessions = db.relationship('Session', backref='campaign_sessions', lazy=True)
-    crews = db.relationship('Crew', backref='campaign_crews', lazy=True)
-    participants = db.relationship('UserCampaignParticipation', backref='campaign_participations', lazy=True)
+    characters = db.relationship('Character', backref='campaign_characters', lazy=True, cascade="all, delete-orphan")
+    sessions = db.relationship('Session', backref='campaign_sessions', lazy=True, cascade="all, delete-orphan")
+    crews = db.relationship('Crew', backref='campaign_crews', lazy=True, cascade="all, delete-orphan")
+    participants = db.relationship('UserCampaignParticipation', backref='campaign_participations', lazy=True,
+                                   cascade="all, delete-orphan")
     users = db.relationship('User', secondary='user_campaign_participations', back_populates='campaigns')
 
     def __init__(self, name, description, creator_id, campaign_picture=None):

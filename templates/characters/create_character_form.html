@@ -1,0 +1,78 @@
+{% extends "home/basic.html" %}
+
+{% block title %}
+Create Character - Blades In The Dark
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+
+    <div class="create-character col-12 col-md-8 col-lg-6 campaign-container p-4 bg-light rounded shadow-lg">
+        <h2 class="text-center align-items-center mb-4">Create Character</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert-container">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <form method="POST" class="character-form-group" action="{{ url_for('characters.submit_character', playbook_name=playbook) }}">
+            {{ form.hidden_tag() }}
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    {{ form.name.label(class="form-label") }}
+                    {{ form.name(class="form-control") }}
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    {{ form.alias.label(class="form-label") }}
+                    {{ form.alias(class="form-control") }}
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    {{ form.look.label(class="form-label") }}
+                    <span class="d-inline-block" id="tooltip" tabindex="0" data-bs-toggle="tooltip" title="You can describe your character's appearance here to create an AI-generated image of your hero.">
+                        <i class="fas fa-question-circle"></i>
+                    </span>
+                    {{ form.look(class="form-control") }}
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    {{ form.heritage.label(class="form-label") }}
+                    {{ form.heritage(class="form-control") }}
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    {{ form.background.label(class="form-label") }}
+                    {{ form.background(class="form-control") }}
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    {{ form.vice.label(class="form-label") }}
+                    {{ form.vice(class="form-control") }}
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    {{ form.ability.label(class="form-label") }}
+                    {{ form.ability(class="form-control") }}
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    {{ form.friend.label(class="form-label") }}
+                    {{ form.friend(class="form-control") }}
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    {{ form.enemy.label(class="form-label") }}
+                    {{ form.enemy(class="form-control") }}
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-success">Create Character</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+

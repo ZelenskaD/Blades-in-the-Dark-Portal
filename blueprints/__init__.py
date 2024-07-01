@@ -16,7 +16,7 @@ def register_blueprints(blades_app: Flask) -> Flask:
     blades_app.register_blueprint(users_bp, url_prefix='/users')
     blades_app.register_blueprint(campaigns_bp, url_prefix='/campaigns')
     blades_app.register_blueprint(sessions_bp, url_prefix='/sessions')
-    blades_app.register_blueprint(sessions_bp, url_prefix='/characters')
+    blades_app.register_blueprint(characters_bp, url_prefix='/characters')
 
     return blades_app
 

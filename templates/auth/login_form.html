@@ -5,8 +5,8 @@ Login - Blades In The Dark
 {% endblock %}
 
 {% block content %}
-<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-  <form class="login-form" action="{{ url_for('auth.login_user') }}" id="login" method="post" style="padding: 20px; margin: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 100%; max-width: 400px;">
+<div class="main-loging-bg d-flex justify-content-center align-items-center">
+  <form class="login-form" action="{{ url_for('auth.login_user') }}" id="login" method="post" >
     <h2 class="text-center">Enter the Shadows</h2>
     {{ form.hidden_tag() }}
     <div class="form-group">

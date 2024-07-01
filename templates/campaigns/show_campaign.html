@@ -1,0 +1,148 @@
+{% extends "home/basic.html" %}
+
+{% block title %}
+Blades In The Dark
+{% endblock %}
+
+{% block content %}
+
+
+<section class="text-white py-4 py-xl-5">
+    <div class="container justify-content-center">
+        {% if campaign.campaign_picture.startswith('http') %}
+            {% set background_url = campaign.campaign_picture %}
+        {% else %}
+            {% set background_url = url_for('static', filename=campaign.campaign_picture.lstrip('/')) %}
+        {% endif %}
+        <div class="banner-campaign border rounded border-10 d-flex flex-column justify-content-center align-items-center p-4 py-5"
+             style="background: url('{{ background_url }}') center / cover;">
+            <h1 class="name-campaign text-shadow">{{ campaign.name }}</h1>
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <p class="mb-4 p-3 description-box">{{ campaign.description }}</p>
+                    <div class="camp-description">
+                        {% if g.user and g.user.id == campaign.creator_id %}
+                            <a href="{{ url_for('session.add_session', campaign_id=campaign.id) }}" class="btn btn-primary btn-lg mx-2">New Session</a>
+                            <a href="{{ url_for('campaigns.edit_campaign', campaign_id=campaign.id) }}" class="btn btn-primary btn-lg mx-2">Edit</a>
+                        {% endif %}
+                        <button class="btn btn-light btn-lg fs-5 py-2 px-4 mx-2" type="button">Crew</button>
+                        {% if g.user and g.user.id == campaign.creator_id %}
+                            <a href="{{ url_for('campaigns.delete_campaign', campaign_id=campaign.id) }}" class="btn btn-danger btn-lg mx-2">Delete</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="sessions-characters-container container-fluid mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="sessions border rounded p-4">
+                <h4 class="text-center session-header">Session History</h4>
+                <div class="container-fluid">
+                    {% if sessions|length == 0 %}
+                        <p class="text-center">No sessions have been created yet.</p>
+                    {% else %}
+                        <div class="btn-group-horizontal">
+                            {% for session in sessions %}
+                                <button type="button" class="btn btn-lg btn-outline-light mb-3 session-btn custom-sessions-btn justify-content-between" data-toggle="modal" data-target="#sessionModal{{ session.id }}">
+                                    {{ loop.index }}
+                                </button>
+                                <div class="modal fade" id="sessionModal{{ session.id }}" tabindex="-1" aria-labelledby="sessionModalLabel{{ session.id }}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="sessionModalLabel{{ session.id }}">{{ session.title }}</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>{{ session.notes }}</p>
+                                                {% if session.updated_at and session.updated_at != session.created_at %}
+                                                    <p>Updated At: {{ session.updated_at.strftime('%b %d %H:%M') }}</p>
+                                                {% else %}
+                                                    <p>Created At: {{ session.created_at.strftime('%b %d %H:%M') }}</p>
+                                                {% endif %}
+                                            </div>
+                                            <div class="modal-footer">
+                                                {% if g.user and g.user.id == campaign.creator_id %}
+                                                    <a href="{{ url_for('session.edit_session', session_id=session.id) }}" class="btn btn-primary">Edit</a>
+                                                    <form action="{{ url_for('session.delete_session', session_id=session.id) }}" method="POST" style="display:inline;">
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </form>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+         <div class="characters-container col-lg-6">
+            <div class="characters border rounded p-4">
+                <h4 class="characters-header text-center">Characters</h4>
+                <div class="d-flex flex-wrap justify-content-center">
+                    {% for character in characters %}
+                        <div class="character-card m-2 text-center" style="width: 30%;">
+                            {% if character.look and character.look.endswith(('.jpg', '.jpeg', '.png', '.webp')) %}
+                                <div class="character-circle mb-2" style="background-image: url('{{ character.look }}');" data-toggle="modal" data-target="#characterModal{{ character.id }}"></div>
+                            {% else %}
+                                <div class="character-circle mb-2" style="background-image: url('/static/contacts/Grace.jpg');" data-toggle="modal" data-target="#characterModal{{ character.id }}"></div>
+                            {% endif %}
+                            <span class="character-name">{{ character.name }}</span>
+                        </div>
+
+                        <!-- Character Modal -->
+                        <div class="modal fade" id="characterModal{{ character.id }}" tabindex="-1" aria-labelledby="characterModalLabel{{ character.id }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="characterModalLabel{{ character.id }}">{{ character.name }}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><strong>Name:</strong> {{ character.name }}</p>
+                                        {% if character.look and character.look.endswith(('.jpg', '.jpeg', '.png', '.webp')) %}
+                                            <img src="{{ character.look }}" class="image-users-ai img-fluid mb-3" alt="{{ character.name }}">
+                                        {% else %}
+                                            <img src="/static/contacts/Grace.jpg" class="default-image-model img-fluid mb-3" alt="{{ character.name }}">
+                                        {% endif %}
+                                        <p><strong>Alias:</strong> {{ character.alias }}</p>
+                                        <p><strong>Experience:</strong> {{ character.experience }}</p>
+                                        <p><strong>Background:</strong> {{ character.background }}</p>
+                                        <p><strong>Heritage:</strong> {{ character.heritage }}</p>
+                                        <p><strong>Vice:</strong> {{ character.vice }}</p>
+                                        <p><strong>Abilities:</strong>
+                                            <ul>
+                                                {% for ability in character.abilities %}
+                                                    <li>{{ ability }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% endblock %}
+

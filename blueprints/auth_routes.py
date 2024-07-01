@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, flash, session, g, Blueprint, flash
 from sqlalchemy.exc import IntegrityError
 
-from requests.auth_forms import SignUpForm, LoginForm
+from form_requests.auth_forms import SignUpForm, LoginForm
 from schemas.user_models import User
 
 CURR_USER_KEY = "curr_user"

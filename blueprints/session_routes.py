@@ -4,7 +4,7 @@ from urllib import request
 
 from schemas import db
 from flask import Blueprint, render_template, flash, url_for, redirect, request, g, jsonify, session
-from requests.session_forms import AddNewSession, EditSessionForm
+from form_requests.session_forms import AddNewSession, EditSessionForm
 from schemas.session_models import Session
 from schemas.campaign_models import Campaign
 # from blueprints.auth_routes import  CURR_USER_KEY

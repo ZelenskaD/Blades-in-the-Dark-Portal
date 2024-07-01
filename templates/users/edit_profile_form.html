@@ -41,14 +41,15 @@
         </div>
 
         <div class="edit-btn-area">
-          <button class="btn btn-primary">{{ form.submit }}</button>
-          <a href="{{ url_for('homepage.show_main_page') }}" class="btn btn-secondary">Cancel</a>
+            <button class="btn btn-md btn-primary">{{ form.submit }}</button>
+            <a href="{{ url_for('homepage.show_main_page') }}" class="btn btn-md btn-light text-center">Cancel</a>
+            <form method="POST" action="{{ url_for('users.delete_profile') }}" >
+                <button class="edit-profile-btn btn btn-md btn-danger " type="submit">Delete Profile</button>
+            </form>
         </div>
+
       </form>
 
-      <form method="POST" action="{{ url_for('users.delete_profile') }}" style="margin-top: 20px;">
-        <button class="btn btn-danger" type="submit">Delete Profile</button>
-      </form>
     </div>
   </div>
 </div>

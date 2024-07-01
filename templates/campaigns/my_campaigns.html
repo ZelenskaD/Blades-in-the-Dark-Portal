@@ -4,9 +4,6 @@
 My Campaigns - Blades In The Dark
 {% endblock %}
 
-{% block hero_class %}
-my-campaign-background
-{% endblock %}
 
 {% block content %}
 
@@ -18,8 +15,17 @@ my-campaign-background
         <div class="row justify-content-left">
             {% for campaign in campaigns %}
             <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="{{ url_for('campaigns.show_campaign', campaign_id=campaign.id) }}" class="text-decoration-none text-dark" style="display: block;">
+                <div class="card  h-100">
+
+                <div class="card-buttons position-absolute  p-3">
+                        <span class="btn btn-primary btn-sm" onclick="location.href='{{ url_for('campaigns.edit_campaign', campaign_id=campaign.id) }}'">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </span>
+                        <span class="btn btn-danger btn-sm" onclick="if(confirm('Are you sure you want to delete this campaign?')) location.href='{{ url_for('campaigns.delete_campaign', campaign_id=campaign.id) }}'">
+                            <i class="fa-solid fa-trash"></i>
+                        </span>
+                    </div>
+                    <a href="{{ url_for('campaigns.show_campaign', campaign_id=campaign.id) }}" class="text-decoration-none text-dark" >
                         {% if campaign.campaign_picture.startswith('http') %}
                             <img src="{{ campaign.campaign_picture }}" class="card-img-top" alt="Campaign Picture">
                         {% else %}
@@ -30,14 +36,7 @@ my-campaign-background
                             <p class="card-text">{{ campaign.description[:100] }}{% if campaign.description|length > 300 %}...{% endif %}</p>
                         </div>
                     </a>
-                    <div class="card-buttons d-flex justify-content-between p-3">
-                        <span class="btn btn-primary btn-sm" onclick="location.href='{{ url_for('campaigns.edit_campaign', campaign_id=campaign.id) }}'">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </span>
-                        <span class="btn btn-danger btn-sm" onclick="if(confirm('Are you sure you want to delete this campaign?')) location.href='{{ url_for('campaigns.delete_campaign', campaign_id=campaign.id) }}'">
-                            <i class="fa-solid fa-trash"></i>
-                        </span>
-                    </div>
+
                 </div>
             </div>
             {% endfor %}

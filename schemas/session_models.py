@@ -13,7 +13,7 @@ class Session(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
     notes = db.Column(db.String(200000), nullable=True)
 
-    campaign_id = db.Column(db.Integer, db.ForeignKey('campaigns.id'), nullable=False)
+    campaign_id = db.Column(db.Integer, db.ForeignKey('campaigns.id', ondelete='CASCADE'), nullable=False)
     campaign = db.relationship('Campaign', backref='session_campaigns')
 
     def __repr__(self):

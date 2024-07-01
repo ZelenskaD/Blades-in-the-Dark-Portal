@@ -4,6 +4,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from blueprints import register_blueprints
 from config import config
 from schemas import connect_db
+
 # from filters import register_filters
 
 

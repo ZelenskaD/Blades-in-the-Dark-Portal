@@ -3,7 +3,7 @@
 from flask import Blueprint, render_template, redirect, url_for, session, flash, g, request
 
 from blueprints.auth_routes import do_logout
-from requests.user_forms import EditUserForm
+from form_requests.user_forms import EditUserForm
 from schemas import bcrypt, db
 from schemas.user_models import User
 

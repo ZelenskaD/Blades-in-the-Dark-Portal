@@ -1,5 +1,70 @@
 @import url("https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap");
 
+/*HOMEPAGE*/
+
+.card-count{
+    background-color: rgba(12, 26, 41, 0.8);
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 1px solid #ffffff; /* White border */
+
+}
+
+.homepage-container{
+    background-image: url("../image/blades_background_hd.png");
+    background-size: cover;
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+}
+
+
+.count-cards{
+    margin-top: 200px;
+}
+
+
+.card-count:hover {
+    transform: translateY(-10px); /* Move the card up on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a larger shadow on hover */
+}
+
+.homepage-h2 {
+    color:#0C1A29 ; /* White color for the heading */
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in-out;
+     margin-top: 100px;
+    font-size: 60px;
+}
+
+/* Keyframes for fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.count-card-title{
+     font-size: 30px;
+}
+
+
+/*.count-card-text, p{*/
+/*    font-size: 70px;*/
+
+/*}*/
+
+
+
+
+
+
 body {
   background-color: #050a13;
   background-size: contain;
@@ -7,6 +72,7 @@ body {
   background-attachment: fixed;
   font-family: "Sedan SC", serif;
 }
+
 
 .hero {
     background-image: url("../image/blades_background_hd.png");
@@ -108,7 +174,7 @@ h4 {
   border: 2px solid #b1e3fa; /* Custom border color */
   color: #b9e9fd; /* Custom text color */
   padding: 10px 20px; /* Adjust padding as needed */
-  font-size: 1em; /* Adjust font size as needed */
+  font-size: 0.7em; /* Adjust font size as needed */
   border-radius: 5px; /* Adjust border radius as needed */
   cursor: pointer; /* Change cursor to pointer on hover */
   text-align: center;
@@ -127,16 +193,29 @@ h4 {
 
 /*SIGN UP FORM*/
 
-.sign-form {
-  background-color: rgba(0, 0, 0, 0.5);
+.sign-form {background-color: rgba(131, 177, 211, 0.8);
   color: white;
 }
 
+.sign-up{
+    height: 100vh;
+}
 /*LOGIN FORM*/
 
 .login-form {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+    background-color: rgba(131, 177, 211, 0.8);
+    color: white;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.main-loging-bg{
+    height: 100vh;
 }
 
 /*USER PROFILE*/
@@ -201,9 +280,8 @@ h4 {
 }
 
 
-
 .edit-btn-area {
-  display: flex;
+
   justify-content: space-between;
 }
 
@@ -264,8 +342,17 @@ h4 {
       border: 1px solid #ACFAFD ;
 
 }
+.campaign-edit-img-fluid{
+    max-height: 300px;
+    width: auto;
+    border: 1px solid #6EC0D8;
+    border-radius: 10px;
 
-/* Campaigns Styles */
+}
+
+
+
+/* campaigns Styles */
 
 .my-campaign-background {
     background-image: url("../backgrounds/navy_blue_hue_image.jpg"); /* Update this path to your actual image path */
@@ -321,7 +408,7 @@ h4 {
 }
 
 .card {
-    margin-bottom: 20px;
+    margin-top: 20px;
     background-color: #1D3853; /* Dark theme background for cards */
     color: white; /* Text color for better readability on dark background */
     border: 1px solid #ACFAFD; /* Border color */
@@ -356,17 +443,20 @@ h4 {
      margin-right:5px;
 }
 .card-buttons {
-    display: flex;
-    justify-content: space-between;
+    display: inline-block;
+    top: 0;
+    right: 0;
     margin-top: 10px;
+
 }
+
 
 .card-buttons .btn {
     font-size: 0.8em;
     padding: 5px 10px;
     border-radius: 4px;
     cursor: pointer;
-    display: flex;
+    display: inline-block;
     align-items: center;
 }
 
@@ -387,11 +477,13 @@ h4 {
 }
 .card-body{
     color:white;
-    padding:10px;
-    margin-top: 5px;
+    padding:5px;
     margin-right:5px;
-}
 
+}
+.card-text:last-child{
+    margin-bottom: -20px;
+}
 /* SHOW CAMPAIGN PAGE*/
 
 .text-shadow {
@@ -481,7 +573,9 @@ h4 {
 }
 
 /*NEW SESSION STYLE*/
-
+.sessions{
+    background-color: #83B1D3;
+}
 .card {
     border-radius: 15px;
     overflow: hidden;
@@ -502,7 +596,7 @@ h4 {
 
 .btn-primary {
     background-color: #1D3853;
-    border: none;
+
 }
 
 .btn-primary:hover {
@@ -518,8 +612,89 @@ h4 {
     background-color: #5a6268;
 }
 
+.session-header{
+    margin-bottom: 20px;
+    font-size: 2rem;
+    background-color: #1d3853;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
 
-/*JOIN CAMPAIGN*/
+}
+.sessions-character-container{
+    margin-left: 40px;
+}
+.btn-group-horizontal{
+    margin-left: 40px;
+}
+.custom-sessions-btn {
+    font-size: 3rem;
+    padding: 4rem 6rem;
+    background-color: #1D3853;
+    margin: 20px;
+}
+
+.name-campaign{
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.banner-campaign{
+    height: 300px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+
+}
+
+
+/*CHARACTERS*/
+.characters-header {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    background-color: #83B1D3;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.characters{
+background-color: #1D3853;;
+}
+
+
+/*.custom-characters-btn {*/
+/*    font-size: 3rem;*/
+/*    padding: 4rem 6rem;*/
+/*    background-color: #1D3853;*/
+/*    margin: 20px;*/
+/*}*/
+
+.character-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.character-name {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+
+
+
+/*{PARTICIPATING  CAMPAIGNS*/
 
  .overlay {
     position: absolute;
@@ -530,3 +705,585 @@ h4 {
     text-align: center;
 }
 
+ .joined-img-fluid{
+     height: 70vh
+ }
+
+ .h2-joined{
+     color: white;
+ }
+
+.joined-cards{
+    height:250px;
+}
+
+
+
+
+
+/*CREATE CHARACTER*/
+
+.create-character{
+    margin-top: 50px;
+}
+
+.character-form-group{
+    margin-left: 20px;
+}
+
+.creation{
+    background-image: url("../image/blades_background_hd.png");
+    background-size: cover;
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+}
+
+
+
+
+
+
+/*SHOW CHARACTER*/
+.profile-character-picture {
+   width: 200px;
+    height: 300px;
+    border: 2px solid #ccc;
+}
+
+.img-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.progress-bar {
+    text-align: center;
+}
+
+.trauma{
+    background-color: #B22222;
+}
+
+.stress{
+    background-color: #6495ED;
+}
+
+.small-progress .progress-bar {
+    height: 20px; /* Adjust the height as needed */
+    font-size: 14px; /* Adjust the font size if needed */
+}
+.description-character p {
+    margin-bottom: 10px;
+}
+
+
+.progress-bar-stress {
+    background: repeating-linear-gradient(
+        45deg,
+        cornflowerblue,
+        cornflowerblue 10px,
+        darkblue 10px,
+        darkblue 20px
+    );
+}
+
+.progress-bar-trauma {
+    background: repeating-linear-gradient(
+        45deg,
+        red,
+        red 10px,
+        darkred 10px,
+        darkred 20px
+    );
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+}
+
+.disabled-message {
+    text-align: center;
+}
+
+.character{
+    background-color: rgba(255, 255, 255, 0.2); /* Adjust the color and transparency as needed */
+}
+
+.contacts .col-lg-6 {
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 50px; /* Rounded corners */
+    padding: 15px; /* Padding inside the box */
+    margin-bottom: 20px; /* Space between the boxes */
+    /*background-color: rgba(255, 255, 255, 0.8); !* Optional: Add a semi-transparent background *!*/
+     color:white;
+    font-size: 20px;
+}
+
+.contacts img {
+
+    border: 5px solid #ccc; /* Border for the images */
+    width: 20%;
+    height: auto; /* Maintain aspect ratio */
+}
+
+.description-character {
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px; /* Padding inside the box */
+    margin-bottom: 20px; /* Space between this box and the next element */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a semi-transparent background */
+}
+
+.inline-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.inline-list li {
+    display: inline-block;
+    margin-right: 15px; /* Adjust spacing as needed */
+    vertical-align: top;
+}
+
+.inline-list form {
+    display: inline;
+}
+
+.inline-list button {
+    display: inline-block;
+}
+.table{
+    background-color:#83B1D3;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px;
+    font-size: 20px;
+}
+
+.skills{
+    background-color: white;
+    font-size: 30px;
+}
+
+.character-details{
+    background-color: #1d3853;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px;
+}
+
+.friend{
+    background-color: #4682B4;
+}
+
+.enemy{
+background-color:#F08080;
+
+}
+
+.friend-h3{
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #000080;
+}
+
+.enemy-h3{
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #B22222;
+
+}
+
+.divide{
+   background-color: white;
+}
+
+.stress-h2, .trauma-h2{
+ color:#1D3853;
+}
+
+.name-character{
+    color: white;
+    background-color:#6495ED;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 60px;
+}
+
+.bio{
+    margin-right: 10px;
+
+}
+
+.character{
+    background-image: url("/static/backgrounds/duskvol.jpg");
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+}
+
+
+.experience-circle {
+    text-align: center;
+    font-size: 24px;
+    position: relative;
+}
+
+.circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #007bff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    margin: 0 auto;
+}
+
+.current {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+.exp{
+    font-size: 10px;
+
+}
+
+.polaroid {
+    width: 200px; /* Adjust size as needed */
+    padding: 10px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    text-align: center;
+    transform: rotate(-5deg); /* Slightly inclined position */
+    position: relative;
+    margin: 20px auto;
+}
+
+.polaroid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+.polaroid-caption {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.pin-icon {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: red; /* Color of the thumbtack */
+}
+
+.polaroid:hover {
+    transform: rotate(0deg); /* Reset inclination on hover for effect */
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.stress-div, .trauma-div{
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a semi-transparent background */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+}
+
+
+
+.edit-char{
+    background-image: url("/static/backgrounds/edit-character-bg.jpg");
+    /*background-size: cover;*/
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+}
+
+.edit-char-form{
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a semi-transparent background */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 20px;
+}
+
+
+
+/*SHOW CAMPAIGN*/
+
+.default-image-model{
+    align-items: center;
+    width: 270px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.image-users-ai{
+    height: 90px; width: 150px;
+}
+
+
+
+    .character-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    .character-image {
+        border-radius: 50%;
+        width: 170px;
+        height: 200px;
+        object-fit: cover;
+    }
+    .character-name {
+        margin-top: 0.5rem;
+        text-align: center;
+    }
+
+
+    /*Edit Skills Page*/
+
+.table {
+    margin: 20px 0;
+    border-collapse: separate;
+    border-spacing: 10px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.table th, .table td {
+    padding: 10px 20px;
+    border: 10px solid #1D3853 ;
+    border-radius: 20px;
+}
+
+.table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+
+}
+
+.table td {
+    background-color: #f4f4f4;
+}
+
+.table th, .table td:first-child {
+    border-left:10px solid #1D3853;
+    border-radius: 20px;
+
+}
+
+.table th, .table td:last-child {
+    border-right: 10px solid #1D3853;
+    border-bottom:10px solid #1D3853;
+
+}
+
+.table th:first-child, .table td:first-child {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom:10px solid #1D3853;
+
+
+}
+
+.table th:last-child, .table td:last-child {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom:10px solid #1D3853;
+}
+
+.table-bordered thead td, .table-bordered thead th{
+    border-bottom-width: 10px;
+    border-bottom-color: #1D3853;
+
+}
+
+.edit-picture{
+    border: 10px solid #83B1D3;
+    border-radius: 20px;
+}
+
+.align-items-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Edit Stress Form*/
+    .edit-stress-container{
+        background-image: url("/static/backgrounds/duskvol.jpg");
+        height: 94vh;
+        background-position: top;
+        max-width: 100%;
+    }
+
+
+.edit-stress-box {
+
+    margin-top: 50px;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: rgba(148, 177, 181, 0.9); /* Adjust the last value for more or less transparency */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border-radius: 8px;
+
+}
+
+.box-header {
+    position: relative;
+    text-align: center;
+}
+
+
+
+.stress-form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+/*.btn {*/
+/*    width: 100%;*/
+/*}*/
+
+/*ALL CHARACTERS PAGE*/
+
+.all-chars {
+    background-image: url("/static/backgrounds/ma-char-bg.jpg");
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+
+}
+
+.character-list {
+    background-color: rgba(214, 179, 123, 0.8); /* Adjust the last value for more or less transparency */
+}
+
+.my-char-container {
+    background-color: rgba(214, 179, 123, 0.8); /* Adjust the last value for more or less transparency */
+}
+
+.char-text{
+    font-size: 60px;
+}
+
+/* Edit Stress Form */
+.edit-stress-container {
+    background-image: url("/static/backgrounds/duskvol.jpg");
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+}
+
+.edit-stress-box {
+    margin-top: 50px;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: rgba(148, 177, 181, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border-radius: 8px;
+}
+
+.box-header {
+    position: relative;
+    text-align: center;
+}
+
+.stress-form {
+    margin-top: 20px;
+}
+
+.circular-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.circle-segment {
+    flex: 1 1 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
+    box-sizing: border-box;
+    position: absolute;
+}
+
+.circle-segment label {
+    transform: rotate(-90deg);
+    white-space: nowrap;
+    font-size: 0.8em;
+}
+
+.circle-segment input[type="checkbox"] {
+    display: none;
+}
+
+.circle-segment input[type="checkbox"] + label {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.circle-segment input[type="checkbox"]:checked + label {
+    background-color: rgba(0, 123, 255, 0.8);
+    color: #fff;
+}
+
+
+.chosen-playbook{
+    background-image: url("/static/backgrounds/background-playbook.jpg");
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+}
