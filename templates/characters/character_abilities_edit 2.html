@@ -1,0 +1,51 @@
+{% extends "home/basic.html" %}
+
+{% block title %}
+Edit Abilities - {{ character.name }}
+{% endblock %}
+
+{% block content %}
+<div class="edit-stress-container d-flex justify-content-center align-items-center">
+    <div class="edit-stress-box">
+        <div class="box-header">
+            <h2 class="text-center">Edit Abilities for {{ character.name }}</h2>
+        </div>
+        <div class="stress-form">
+            <form method="POST" action="{{ url_for('characters.edit_abilities', character_id=character.id) }}">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.abilities.label }}
+                    {{ form.abilities(class="form-control", onchange="showDescription()") }}
+                </div>
+                <div class="form-group">
+                    <label for="ability-description">Description</label>
+                    <textarea id="ability-description" class="form-control" readonly></textarea>
+                </div>
+                <div class="form-group text-center">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const abilitiesDescriptions = {{ abilities_descriptions | tojson }};
+    function showDescription() {
+        const selectedAbilityIndex = document.querySelector('select[name="abilities"]').value;
+        const description = abilitiesDescriptions[selectedAbilityIndex];
+        document.getElementById('ability-description').innerText = description;
+    }
+    // Initialize description on page load if a selection exists
+    document.addEventListener('DOMContentLoaded', function() {
+        showDescription();
+    });
+</script>
+{% endblock %}
+
+
+
+
+
+
+

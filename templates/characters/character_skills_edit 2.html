@@ -1,0 +1,92 @@
+{% extends "home/basic.html" %}
+
+{% block title %}
+Edit Skills - {{ character.name }}
+{% endblock %}
+{% block content %}
+<div class="edit-char d-flex justify-content-center container-fluid">
+   <div class="row">
+      <div class="edit-char-form col-lg-12 align-item-center justify-content-center">
+         <h2 class="text-center">Edit Your Character Details</h2>
+         <form method="POST" action="{{ url_for('characters.submit_skills', character_id=character.id) }}" class="align-item-center">
+            {{ form.hidden_tag() }}
+           <h3 class="align-items-center">Skills</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Insight</th>
+                        <th>Prowess</th>
+                        <th>Resolve</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                {{ form.hunt.label }}
+                                {{ form.hunt(class="form-control", type="number", min="0") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.study.label }}
+                                {{ form.study(class="form-control", type="number", min="0") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.survey.label }}
+                                {{ form.survey(class="form-control", type="number", min="0") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.tinker.label }}
+                                {{ form.tinker(class="form-control", type="number", min="0") }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                {{ form.finnesse.label }}
+                                {{ form.finnesse(class="form-control", type="number", min="0") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.prowl.label }}
+                                {{ form.prowl(class="form-control", type="number", min="0") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.skirmish.label }}
+                                {{ form.skirmish(class="form-control", type="number", min="0") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.wreck.label }}
+                                {{ form.wreck(class="form-control", type="number", min="0") }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                {{ form.attune.label }}
+                                {{ form.attune(class="form-control", type="number", min="0") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.command.label }}
+                                {{ form.command(class="form-control", type="number", min="0") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.consort.label }}
+                                {{ form.consort(class="form-control", type="number", min="0") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.sway.label }}
+                                {{ form.sway(class="form-control", type="number", min="0") }}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-group text-center">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
+{% endblock %}
+
+
+
+
