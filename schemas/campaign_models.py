@@ -20,7 +20,6 @@ class Campaign(db.Model):
 
     characters = db.relationship('Character', backref='campaign_characters', lazy=True, cascade="all, delete-orphan")
     sessions = db.relationship('Session', backref='campaign_sessions', lazy=True, cascade="all, delete-orphan")
-    crews = db.relationship('Crew', backref='campaign_crews', lazy=True, cascade="all, delete-orphan")
     participants = db.relationship('UserCampaignParticipation', backref='campaign_participations', lazy=True,
                                    cascade="all, delete-orphan")
     users = db.relationship('User', secondary='user_campaign_participations', back_populates='campaigns')
