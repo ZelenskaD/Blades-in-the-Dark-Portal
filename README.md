@@ -58,24 +58,47 @@ The Blades in the Dark API provides the necessary functionality to create the we
 - **Campaign List Management:** Allow users to filter and view the list of campaigns they own.
 
 ## Website Features and Priorities
+- **Auth&**
+ Welcome Page.
+  ![Welcome](docs/images/welcome_page.png)
 - **Character Management:**
   - Create characters using an AI image generator or by adding an image URL.
+  ![Create](docs/images/create_char.png)
+  - Choose abilities of your character.
+  ![Choose](docs/images/create_form.png)
+  - Character main page.
+  ![Choose](docs/images/character_profile.png)
+  ![Choose](docs/images/char_prof.png)
+
   - Edit character skills, abilities, and stress/trauma progress bars in different forms.
+    ![Choose](docs/images/skills.png)
   - Delete characters.
   - View a list of your characters.
+   ![Choose](docs/images/list_chars.png)
+
 
 - **Campaign Management:**
-  - Create multiple campaigns.
+  - Create  campaigns.
+  ![Choose](docs/images/create_campaign.png)
+  -  View a list of your campaigns.
+  ![Choose](docs/images/list_camps.png)
   - Edit or delete campaigns.
-  - View a list of your campaigns.
+  - Main page of your campaign..
+  ![Choose](docs/images/campaign_page.png)
+  -Shortcut to the characters description. 
+  ![Choose](docs/images/character_shortcut.png)
+
 
 - **Session Management:**
   - Create sessions for campaigns that you own.
+    ![Choose](docs/images/sessions_manage.png)
   - Edit or delete sessions.
 
 - **Participation in Campaigns:**
   - Join and be a part of other campaigns.
+    ![Choose](docs/images/join_campaign.png)
   - Manage your participation in multiple campaigns.
+    ![Choose](docs/images/participating_campaigns.png)
   - Have multiple characters participate in the same campaign.
   - Leave campaigns at any time.
 
