@@ -1,7 +1,6 @@
 {% extends "home/basic.html" %}
-
 {% block title %}
-Main Page
+Blades Portal - Main Page
 {% endblock %}
 
 {% block content %}
@@ -9,40 +8,41 @@ Main Page
     <div class="row justify-content-center">
         <h1 class="homepage-h2">Your adventure begins here!</h1>
     </div>
-    <div class="count-cards row justify-content-center">
+    <div class="count-cards row justify-content-center mt-5">
         <div class="col-md-2">
             <div class="card-count">
                 <div class="card-body">
                     <h1 class="count-card-title">Users</h1>
-                    <p class="count-card-text">{{ user_count }}</p>
+                    <h1 style="font-size:20px; " class="count-card-title">in the Blades Portal</h1>
+                    <p style="font-size:40px;" class="count-card-text">{{ user_count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card-count">
+                <div class="card-body" onclick="window.location.href='{{ url_for('characters.show_all_characters') }}'">
+                    <h1 class="count-card-title">My Characters</h1>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card-count">
+                <div class="card-body" onclick="window.location.href='{{ url_for('campaigns.my_campaigns') }}'">
+                    <h1 class="count-card-title">My Campaigns</h1>
+
                 </div>
             </div>
         </div>
         <div class="col-md-2">
             <div class="card-count">
                 <div class="card-body">
-                    <h1 class="count-card-title">Characters</h1>
-                    <p class="count-card-text">{{ character_count }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="card-count">
-                <div class="card-body">
-                    <h1 class="count-card-title">Campaigns</h1>
-                    <p class="count-card-text">{{ campaign_count }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="card-count">
-                <div class="card-body">
-                    <h1 class="count-card-title">Playbooks</h1>
-                    <p class="count-card-text">7</p>
+                    <h1  class="count-card-title">Playbooks</h1>
+                    <h1 style="font-size:20px; " class="count-card-title">that you can play</h1>
+                    <p style="font-size:40px;" class="count-card-text">{{ playbook_count }}</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
-

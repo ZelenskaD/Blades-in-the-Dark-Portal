@@ -5,24 +5,45 @@ My Characters - Blades In The Dark
 {% endblock %}
 
 {% block content %}
-<div class="all-chars container ">
+<div class="all-chars container">
     <div class="my-char-container">
         <h2 class="char-text text-center mt-4">My Characters</h2>
     </div>
-    <div class="container character-list mt-1">
-        <div class="row justify-content-left">
-            {% for character in characters %}
-            <div class="col-md-4 ">
-                <div class="polaroid" onclick="window.location.href='{{ url_for('characters.show_character', character_id=character.id) }}'">
-                    <img src="{{ character.image if character.image else 'https://via.placeholder.com/150' }}" alt="{{ character.name }}">
-                    <div class="polaroid-caption">{{ character.name }}</div>
-                    <div class="pin-icon">📌</div>
+    <div class="row justify-content-center mt-4">
+        {% if characters_pagination.items|length == 0 %}
+            <div class="row message-empty justify-content-center">
+                <p>You don't have any characters yet.</p>
+                <a href="/characters/choose-playbook" class="btn btn-lg btn-link">Create Character NOW</a>
+            </div>
+        {% else %}
+            <div class="container character-list mt-1">
+                <div class="pagination mt-4">
+                    {% if characters_pagination.has_prev %}
+                        <a href="{{ url_for('characters.show_all_characters', page=characters_pagination.prev_num) }}" class="btn btn-primary">&laquo; Previous</a>
+                    {% endif %}
+                    {% if characters_pagination.has_next %}
+                        <a href="{{ url_for('characters.show_all_characters', page=characters_pagination.next_num) }}" class="btn btn-primary">Next &raquo;</a>
+                    {% endif %}
+                </div>
+                <div class="row justify-content-left">
+                    {% for character in characters_pagination.items %}
+                        <div class="col-md-4">
+
+                            <div class="polaroid-all-characters" onclick="window.location.href='{{ url_for('characters.show_character', character_id=character.id) }}'">
+                                <img id="character-image"
+                                     src="{% if character.image_url %}{{ character.image_url }}{% elif character.image %}{{ character.image }}{% else %}{{ url_for('static', filename='default_picture.jpg') }}{% endif %}"
+                                     alt="Character's profile picture" class="profile-character-picture fixed-size-image-all-characters">
+                                <div class="polaroid-caption-all-characters">{{ character.name }}</div>
+
+                                <div class="pin-icon">📌</div>
+                            </div>
+
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
-            {% endfor %}
-        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
-
 

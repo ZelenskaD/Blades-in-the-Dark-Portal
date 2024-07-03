@@ -5,40 +5,58 @@ Participating Campaigns
 {% endblock %}
 
 {% block content %}
-
-
-<section class="text-white py-4 py-xl-5">
-    <div class="container">
-        <h1 class="text-center mb-4">Participating Campaigns</h1>
-        <div class="row">
-            {% for campaign in campaigns %}
-                <div class="col-md-6 mb-4">
-                    <div class="card bg-dark text-white">
-                        {% if campaign.campaign_picture %}
-                            <img src="{{ campaign.campaign_picture }}" class="card-img-top" alt="{{ campaign.name }}">
+<div class="participating container">
+    <div class="my-char-container">
+        <h2 class="part-camp text-white text-center mt-4">Participating Campaigns</h2>
+    </div>
+    <div class="participating-camp container character-list mt-1">
+        <div class="participating-pagination mt-4">
+            {% if characters_pagination.has_prev %}
+                <a href="{{ url_for('campaigns.participating_campaigns', page=characters_pagination.prev_num) }}" class="btn btn-primary">&laquo; Previous</a>
+            {% endif %}
+            {% if characters_pagination.has_next %}
+                <a href="{{ url_for('campaigns.participating_campaigns', page=characters_pagination.next_num) }}" class="btn btn-primary">Next &raquo;</a>
+            {% endif %}
+        </div>
+        <div class="row justify-content-left">
+            {% for character in characters_pagination.items %}
+                <div class="col-md-4 mb-4">
+                    <div class="participating-polaroid-card">
+                        {% if character.image_url %}
+                            <img src="{{ character.image_url }}" alt="{{ character.name }}" class="img-fluid mb-3 polaroid-image">
+                         {% elif character.image%}
+                           <img src="{{ character.image }}" alt="{{ character.name }}" class="img-fluid mb-3 polaroid-image">
+                        {% else %}
+                            <img src="{{ url_for('static', filename='default_picture.jpg') }}" alt="{{ character.name }}" class="img-fluid mb-3 polaroid-image">
                         {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ campaign.name }}</h5>
-                            <div class="characters-in-campaign">
-                                {% for character in campaign.characters %}
-                                    <div class="character d-flex align-items-center mb-3">
-                                        {% if character.look %}
-                                            <img src="{{ character.look }}" class="character-image" alt="{{ character.name }}">
-                                        {% else %}
-                                            <img src="/static/contacts/Grace.jpg" class="character-image" alt="{{ character.name }}">
-                                        {% endif %}
-                                        <h3>{{ character.name }}</h3>
-                                        <form method="POST" action="{{ url_for('campaigns.leave_campaign', character_id=character.id) }}" class="ml-auto">
-                                            <button type="submit" class="btn btn-danger btn-sm">Leave</button>
-                                        </form>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
+                        <h5 class="card-title">{{ character.name }}</h5>
+                        <p class="card-text"><strong>Abilities:</strong></p>
+                        <ul class="list-unstyled">
+                            {% for ability in character.abilities %}
+                                <li>{{ ability.name }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% if character.campaign %}
+                            <p class="card-text"><strong>Campaign:</strong> {{ character.campaign.name }}</p>
+                            <a href="{{ url_for('campaigns.show_campaign', campaign_id=character.campaign.id) }}" class="btn btn-primary btn-block mb-2">View Campaign</a>
+                            <form action="{{ url_for('campaigns.leave_campaign') }}" method="POST">
+                                <input type="hidden" name="character_id" value="{{ character.id }}">
+                                <button type="submit" class="btn btn-danger btn-block">Leave Campaign</button>
+                            </form>
+                        {% else %}
+                            <p class="card-text"><strong>Campaign:</strong> None</p>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}
         </div>
     </div>
-</section>
+</div>
 {% endblock %}
+
+
+
+
+
+
+

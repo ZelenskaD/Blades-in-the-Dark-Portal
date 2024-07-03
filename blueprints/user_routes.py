@@ -25,12 +25,12 @@ def delete_profile():
 
     if 'curr_user' not in session:
         flash("Access unauthorized.", "danger")
-        return redirect(url_for('homepage.show_main_page'))
+        return redirect(url_for('homepage.show_homepage_or_main_page'))
 
     user = User.query.get(session['curr_user'])
     if not user:
         flash('User not found.', 'danger')
-        return redirect(url_for('homepage.show_main_page'))
+        return redirect(url_for('homepage.show_homepage_or_main_page'))
 
     do_logout()
 
@@ -38,7 +38,7 @@ def delete_profile():
     db.session.commit()
 
     flash("Profile deleted successfully!", "success")
-    return redirect(url_for('homepage.show_main_page'))
+    return redirect(url_for('homepage.show_homepage_or_main_page'))
 
 
 @users_bp.route('/edit_profile', methods=["GET", "POST"])
@@ -51,7 +51,7 @@ def edit_profile():
     user = User.query.get(session['curr_user'])
     if not user:
         flash('User not found.', 'danger')
-        return redirect(url_for('homepage.show_main_page'))
+        return redirect(url_for('homepage.show_homepage_or_main_page'))
 
     form = EditUserForm(obj=user)
 
@@ -71,6 +71,6 @@ def edit_profile():
 
         db.session.commit()
         flash("Profile updated successfully!", 'success')
-        return redirect(url_for('homepage.show_main_page'))
+        return redirect(url_for('homepage.show_homepage_or_main_page'))
 
     return render_template('users/edit_profile_form.html', form=form, user=user)

@@ -6,7 +6,7 @@ Edit Skills - {{ character.name }}
 {% block content %}
 <div class="edit-char d-flex justify-content-center container-fluid">
    <div class="row">
-      <div class="edit-char-form col-lg-8 align-item-center justify-content-center">
+      <div class="edit-char-form col-lg-12 align-item-center justify-content-center">
          <h2 class="text-center">Edit Your Character Details</h2>
          <form method="POST" action="{{ url_for('characters.submit_skills', character_id=character.id) }}" class="align-item-center">
             {{ form.hidden_tag() }}
@@ -82,9 +82,6 @@ Edit Skills - {{ character.name }}
                 {{ form.submit(class="btn btn-primary") }}
             </div>
          </form>
-      </div>
-      <div class="edit-picture col-lg-4 align-item-center">
-         <img id="character-image" src="{{ character.look if character.look else 'https://via.placeholder.com/150' }}" alt="Character's profile picture" class="profile-character-picture img-thumbnail">
       </div>
    </div>
 </div>

@@ -3,40 +3,64 @@
 {% block title %}
 {{ character.name }} - Blades In The Dark
 {% endblock %}
+
 {% block content %}
-<div id="overlay" style="display: none;">
+<div id="overlay" style="display: {% if character.trauma['current'] == character.trauma['maximum'] %}block{% else %}none{% endif %};">
     <div class="disabled-message">
         <p>Your character is traumatized and cannot continue.</p>
-        <img src="{{ url_for('static', filename='images/ghost_default.jpg') }}" alt="Ghost Image">
-        <button id="redirect-button" class="btn btn-secondary">Show All Characters</button>
+        <img src="{{ url_for('static', filename='backgrounds/rip.jpg') }}" alt="Ghost Image">
+        <button id="redirect-button" class="btn btn-secondary" onclick="location.href='{{ url_for('characters.show_all_characters', character_id=character.id) }}'">Show All Characters</button>
     </div>
 </div>
 
 <div class="character container-fluid character-picture">
     <!-- Row Bio -->
+
+
     <div class="row bio justify-content-end ml-2 mb-2">
         <!-- Character Name and Picture -->
-<div class="col-lg-4 mt-4">
-    <div class="polaroid">
-<div class="pin-icon">📌</div>
-        <img id="character-image"
-             src="{{ character.image if character.image else 'https://via.placeholder.com/150' }}"
-             alt="Character's profile picture" class="profile-character-picture">
-        <div class="polaroid-caption">{{ character.name }}</div>
-    </div>
-</div>
+
+
+
+        <div class="col-lg-4 mt-4">
+            <div class="profile-polaroid">
+                <div class="pin-icon">📌</div>
+                <img id="character-image"
+             src="{% if character.image_url %}{{ character.image_url }}{% elif character.image %}{{ character.image }}{% else %}{{ url_for('static', filename='default_picture.jpg') }}{% endif %}"
+             alt="Character's profile picture" class="profile-character-picture fixed-size-image-profile">
+                <div class="polaroid-caption">{{ character.name }}</div>
+            </div>
+        </div>
 
         <!-- Right Column: Stress and Trauma Progress Bars, Friend and Enemy -->
         <div class="stress-div col-lg-8 mt-4">
-            <h2 class="stress-h2">
-                <span><i class="fa-solid fa-temperature-high"></i></span>
-                Stress
-                <span class="btn btn-primary btn-sm" onclick="location.href='{{ url_for('characters.edit_stress', character_id=character.id) }}'">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                </span>
-            </h2>
+     <h2 class="stress-h2">
+    <div class="stress-container">
+        <span>😰</span>
+        <span>Stress</span>
+        <span class="btn btn-primary btn-sm" onclick="location.href='{{ url_for('characters.edit_stress', character_id=character.id) }}'">
+            <i class="fa-solid fa-pen-to-square"></i>
+        </span>
+        <form action="{{ url_for('characters.delete_character') }}" method="POST" class="delete-character-form">
+            <input type="hidden" name="character_id" value="{{ character.id }}">
+            {% if character.campaign_id %}
+                <input type="hidden" name="campaign_id" value="{{ character.campaign_id }}">
+            {% endif %}
+            <button type="submit" class="btn-delete text-white btn btn-danger position-absolute " style="top:0; right:0;">
+                Delete Character <span class="fa-solid fa-trash"></span>
+            </button>
+        </form>
+    </div>
+</h2>
 
-            <div class="stress-div progress small-progress">
+
+
+
+                <div class="progress-value-numbers">
+                    {{ character.stress['current'] }} / {{ character.stress['maximum'] }}
+                </div>
+
+            <div class="stress-div progress large-progress position-relative">
                 <div id="stress-bar" class="progress-bar progress-bar-striped progress-bar-stress" role="progressbar"
                      style="width: {{ (character.stress['current'] / character.stress['maximum']) * 100 }}%"
                      aria-valuenow="{{ character.stress['current'] }}" aria-valuemin="0"
@@ -45,8 +69,11 @@
                 </div>
             </div>
 
-            <h2 class="trauma-h2"><span><i class="fa-solid fa-temperature-high"></i></span> Trauma</h2>
-            <div class="trauma-div progress small-progress">
+            <h2 class="trauma-h2"><span>😱</span> Trauma</h2>
+             <div class="progress-value-numbers">
+                    {{ character.trauma['current'] }} / {{ character.trauma['maximum'] }}
+             </div>
+            <div class="trauma-div progress small-progress position-relative">
                 <div id="trauma-bar" class="progress-bar progress-bar-striped progress-bar-trauma bg-danger" role="progressbar"
                      style="width: {{ (character.trauma['current'] / 4) * 100 }}%"
                      aria-valuenow="{{ character.trauma['current'] }}" aria-valuemin="0"
@@ -57,17 +84,17 @@
 
             <div class="row contacts mt-4 justify-content-right">
                 <div class="friend col-lg-6 text-center">
-                    <h3 class="friend-h3"><span><i class="fas fa-handshake"></i> </span>Friend</h3>
+                    <h3 class="friend-h3"><span>🤝</span>Friend</h3>
                     <img src="{{ url_for('static', filename='contacts/' + character.friend.name + '.jpg') }}"
-                         alt="{{ character.friend.name }}" class="img-circle">
+                         alt="{{ character.friend.name }}" class="img-circle fixed-size-image">
                     <p class="friend-h3">Name: {{ character.friend.name }}</p>
                     <p class="friend-h3">Occupation: {{ character.friend.occupation }}</p>
                 </div>
 
                 <div class="enemy col-lg-6 text-center">
-                    <h3 class="enemy-h3"><span><i class="fas fa-skull"></i> </span>Enemy</h3>
+                    <h3 class="enemy-h3"><span>😡</span>Enemy</h3>
                     <img src="{{ url_for('static', filename='contacts/' + character.enemy.name + '.jpg') }}"
-                         alt="{{ character.enemy.name }}" class="img-circle">
+                         alt="{{ character.enemy.name }}" class="img-circle fixed-size-image">
                     <p class="enemy-h3">Name: {{ character.enemy.name }}</p>
                     <p class="enemy-h3">Occupation: {{ character.enemy.occupation }}</p>
                 </div>
@@ -80,22 +107,22 @@
         <!-- Left Column: Character Details -->
         <div class="col-lg-4 character-details">
             <p>
-                <span><i class="fa fa-star"></i></span><strong>Experience: {{ character.experience }}</strong>
+                <span>🎓<strong>Experience: {{ character.experience }}</strong>
                 <span class="btn btn-primary btn-sm" onclick="location.href='{{ url_for('characters.edit_exp', character_id=character.id) }}'">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </span>
             </p>
             <hr class="divide">
-            <p><span><i class="fas fa-mask"></i></span> <strong>Alias:</strong> {{ character.alias }}</p>
+            <p><span>🕵️</span> <strong>Alias:</strong> {{ character.alias }}</p>
             <hr class="divide">
-            <p><span><i class="fa-solid fa-briefcase"></i></span> <strong>Heritage:</strong> {{ character.heritage }}</p>
+            <p><span>🌍 </span> <strong>Heritage:</strong> {{ character.heritage }}</p>
             <hr class="divide">
-            <p><span><i class="fa-solid fa-landmark"></i></span> <strong>Background:</strong> {{ character.background }}</p>
+            <p><span> 🧾</span> <strong>Background:</strong> {{ character.background }}</p>
             <hr class="divide">
-            <p><span><i class="fa-solid fa-user-secret"></i></span> <strong>Vice:</strong> {{ character.vice }}</p>
+            <p><span>🍷</span> <strong>Vice:</strong> {{ character.vice }}</p>
             <hr class="divide">
             <h4>
-                <span><i class="fa-solid fa-wand-magic-sparkles"></i></span> Abilities</h4>
+                <span>🔮</span> Abilities</h4>
             {% for ability in character.abilities %}
                 <p>{{ ability.name }}: {{ ability.description }}</p>
             {% endfor %}
@@ -106,7 +133,7 @@
 
         <!-- Right Column: Skills Table -->
         <div class="col-lg-8 justify-content-end">
-            <h2 class="skills table h2"><span><i class="fa-solid fa-vial"></i></span> Skills
+            <h2 class="skills table h2"><span>🛠️</span> Skills
                <span class="btn btn-primary btn-sm" onclick="location.href='{{ url_for('characters.edit_skills', character_id=character.id) }}'">
                   <i class="fa-solid fa-pen-to-square"></i>
                </span>
@@ -114,53 +141,53 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Insight</th>
-                        <th>Prowess</th>
-                        <th>Resolve</th>
+                        <th>🔍 Insight</th>
+                        <th>⚔️Prowess</th>
+                        <th>💪 Resolve</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>
                             <div class="form-group">
-                                <strong>Hunt:</strong> {{ character.insight['hunt'] }}
+                                <strong>🏹 Hunt:</strong> {{ character.insight['hunt'] }}
                             </div>
                             <div class="form-group">
-                                <strong>Study:</strong> {{ character.insight['study'] }}
+                                <strong>📚 Study:</strong> {{ character.insight['study'] }}
                             </div>
                             <div class="form-group">
-                                <strong>Survey:</strong> {{ character.insight['survey'] }}
+                                <strong> 🗺️ Survey:</strong> {{ character.insight['survey'] }}
                             </div>
                             <div class="form-group">
-                                <strong>Tinker:</strong> {{ character.insight['tinker'] }}
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <strong>Finnesse:</strong> {{ character.prowess['finnesse'] }}
-                            </div>
-                            <div class="form-group">
-                                <strong>Prowl:</strong> {{ character.prowess['prowl'] }}
-                            </div>
-                            <div class="form-group">
-                                <strong>Skirmish:</strong> {{ character.prowess['skirmish'] }}
-                            </div>
-                            <div class="form-group">
-                                <strong>Wreck:</strong> {{ character.prowess['wreck'] }}
+                                <strong>🛠️Tinker:</strong> {{ character.insight['tinker'] }}
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
-                                <strong>Attune:</strong> {{ character.resolve['attune'] }}
+                                <strong>🤹Finnesse:</strong> {{ character.prowess['finnesse'] }}
                             </div>
                             <div class="form-group">
-                                <strong>Command:</strong> {{ character.resolve['command'] }}
+                                <strong>🕵️Prowl:</strong> {{ character.prowess['prowl'] }}
                             </div>
                             <div class="form-group">
-                                <strong>Consort:</strong> {{ character.resolve['consort'] }}
+                                <strong> ⚔️Skirmish:</strong> {{ character.prowess['skirmish'] }}
                             </div>
                             <div class="form-group">
-                                <strong>Sway:</strong> {{ character.resolve['sway'] }}
+                                <strong>💥Wreck:</strong> {{ character.prowess['wreck'] }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <strong>🧘Attune:</strong> {{ character.resolve['attune'] }}
+                            </div>
+                            <div class="form-group">
+                                <strong> 🗣️ Command:</strong> {{ character.resolve['command'] }}
+                            </div>
+                            <div class="form-group">
+                                <strong>🍻Consort:</strong> {{ character.resolve['consort'] }}
+                            </div>
+                            <div class="form-group">
+                                <strong>🕺Sway:</strong> {{ character.resolve['sway'] }}
                             </div>
                         </td>
                     </tr>

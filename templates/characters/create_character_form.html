@@ -6,9 +6,8 @@ Create Character - Blades In The Dark
 
 {% block content %}
 
-<div class="d-flex justify-content-center align-items-center min-vh-100">
-
-    <div class="create-character col-12 col-md-8 col-lg-6 campaign-container p-4 bg-light rounded shadow-lg">
+<div class="create-character d-flex justify-content-center align-items-center min-vh-100">
+    <div class="col-12 col-md-8 col-lg-6 p-4 bg-light rounded shadow-lg">
         <h2 class="text-center align-items-center mb-4">Create Character</h2>
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -40,7 +39,11 @@ Create Character - Blades In The Dark
                     <span class="d-inline-block" id="tooltip" tabindex="0" data-bs-toggle="tooltip" title="You can describe your character's appearance here to create an AI-generated image of your hero.">
                         <i class="fas fa-question-circle"></i>
                     </span>
-                    {{ form.look(class="form-control") }}
+                    {{ form.look(class="form-control", id="look-input") }}
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                    {{ form.image_url.label(class="form-label") }}
+                    {{ form.image_url(class="form-control", id="image-url-input") }}
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
                     {{ form.heritage.label(class="form-label") }}
@@ -68,11 +71,40 @@ Create Character - Blades In The Dark
                 </div>
             </div>
             <div class="text-center mt-4">
-                <button type="submit" class="btn btn-success">Create Character</button>
+                <button type="submit" class="btn btn-lg btn-primary">Create Character</button>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const lookInput = document.getElementById('look-input');
+    const imageUrlInput = document.getElementById('image-url-input');
+
+    function toggleInputs() {
+        if (lookInput.value.trim() !== '') {
+            imageUrlInput.disabled = true;
+        } else {
+            imageUrlInput.disabled = false;
+        }
+
+        if (imageUrlInput.value.trim() !== '') {
+            lookInput.disabled = true;
+        } else {
+            lookInput.disabled = false;
+        }
+    }
+
+    lookInput.addEventListener('input', toggleInputs);
+    imageUrlInput.addEventListener('input', toggleInputs);
+
+    toggleInputs(); // Initial check on page load
+});
+</script>
+
 {% endblock %}
+
+
 
 

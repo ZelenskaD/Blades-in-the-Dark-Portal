@@ -1,6 +1,6 @@
-import logging
-import os
 
+import os
+import threading
 
 from flask import Blueprint
 from flask import redirect, url_for, session, flash, jsonify, request
@@ -9,10 +9,9 @@ from flask import render_template
 from clients import blades_api_client
 from form_requests.character_forms import ChoosePlaybookForm, set_playbook_choices, CreateCharacterForm, \
     set_character_choices, EditSkillsForm, EditAbilitiesForm, EditExperienceForm, EditStressForm
-from schemas import User, Character, db
+from schemas import User, Character, db, Campaign
 from schemas.decorators.abilities_type import Ability
 
-# from schemas.decorators.experience_type import Experience
 from schemas.decorators.insight_type import Insight
 from schemas.decorators.prowess_type import Prowess
 from schemas.decorators.resolve_type import Resolve
@@ -37,7 +36,7 @@ def choose_playbook():
         return render_template('characters/create_playbook_form.html', form=form)
     else:
         flash('An error has occurred.', 'danger')
-        return redirect(url_for('homepage.show_main_page'))
+        return redirect(url_for('homepage.show_homepage_or_main_page'))
 
 
 @characters_bp.route('/create-character', methods=['POST'])
@@ -50,7 +49,7 @@ def create_character():
     if form.validate_on_submit():
         if 'curr_user' not in session:
             flash('You do not have permission to create a character', 'danger')
-            return redirect(url_for('homepage.show_main_page'))
+            return redirect(url_for('homepage.show_homepage_or_main_page'))
 
         playbook_name = form.name.data
         playbook = next((playbook for playbook in playbooks if playbook['name'] == playbook_name), None)
@@ -131,6 +130,7 @@ def submit_character(playbook_name):
             name=form.name.data,
             alias=form.alias.data,
             look=form.look.data,
+            image_url=form.image_url.data,
             heritage=form.heritage.data,
             background=form.background.data,
             vice=form.vice.data,
@@ -151,12 +151,15 @@ def submit_character(playbook_name):
         db.session.add(character)
         db.session.commit()
 
+        if character.look is not None and not character.image_url:
+            thread = threading.Thread(target=create_api_image, args=(character.id, character.look,))
+            thread.start()
+
         flash('Character successfully created.', 'success')
         return redirect(url_for('characters.show_character', character_id=character.id))
-        # return render_template('characters/show_all_characters.html', playbook=playbook, form=form)
     else:
         flash('An error has occurred.', 'danger')
-        return redirect(url_for('homepage.show_main_page'))
+        return redirect(url_for('homepage.show_homepage_or_main_page'))
 
 
 @characters_bp.route('/my_characters', methods=['GET'])
@@ -171,9 +174,11 @@ def show_all_characters():
         flash('User not found', 'danger')
         return redirect(url_for('auth.login_user'))
 
-    characters = Character.query.filter_by(user_id=user_id).all()
+    page = request.args.get('page', 1, type=int)
+    characters_pagination = Character.query.filter_by(user_id=user_id).paginate(page, per_page=3, error_out=False)
+    campaigns = Campaign.query.all()  # Fetch all campaigns, or modify this to fetch relevant campaigns
 
-    return render_template('characters/show_all_characters.html', characters=characters)
+    return render_template('characters/show_all_characters.html', characters_pagination=characters_pagination,campaigns=campaigns)
 
 
 @characters_bp.route('/show/<int:character_id>', methods=['GET'])
@@ -292,11 +297,6 @@ def edit_abilities(character_id):
                            abilities_descriptions=abilities_descriptions)
 
 
-
-
-
-
-
 @characters_bp.route('/edit-exp/<int:character_id>', methods=['GET', 'POST'])
 def edit_exp(character_id):
     character = Character.query.get_or_404(character_id)
@@ -333,6 +333,29 @@ def edit_stress(character_id):
     return render_template('characters/character_stress_edit.html', form=form, character=character)
 
 
+def create_api_image(character_id, look):
+    print("calling API")
+    image_url = blades_api_client.generate_image(character_id, look)
+    print('finished API call')
+    character = Character.query.get_or_404(character_id)
+    character.image = image_url
+    db.session.commit()
 
 
+@characters_bp.route('/delete_character', methods=['POST'])
+def delete_character():
+    character_id = request.form.get('character_id')
+    character = Character.query.get(character_id)
+    if character:
+        db.session.delete(character)
+        db.session.commit()
+        flash('Character deleted.', 'success')
+    else:
+        flash('Invalid operation.', 'danger')
+
+    campaign_id = request.form.get('campaign_id')
+    if campaign_id:
+        return redirect(url_for('campaigns.show_campaign', campaign_id=campaign_id))
+    else:
+        return redirect(url_for('characters.show_all_characters'))
 

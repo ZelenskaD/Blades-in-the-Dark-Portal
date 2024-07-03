@@ -6,6 +6,7 @@ Login - Blades In The Dark
 
 {% block content %}
 <div class="main-loging-bg d-flex justify-content-center align-items-center">
+
   <form class="login-form" action="{{ url_for('auth.login_user') }}" id="login" method="post" >
     <h2 class="text-center">Enter the Shadows</h2>
     {{ form.hidden_tag() }}

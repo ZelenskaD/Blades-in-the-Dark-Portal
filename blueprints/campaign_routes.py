@@ -47,7 +47,7 @@ def edit_campaign(campaign_id):
     if form.validate_on_submit():
         if 'curr_user' not in session or session['curr_user'] != campaign.creator_id:
             flash('You do not have permission to edit this campaign', 'danger')
-            return redirect(url_for('homepage.show_main_page'))
+            return redirect(url_for('homepage.show_homepage_or_main_page'))
 
         campaign.name = form.name.data
         campaign.description = form.description.data
@@ -55,7 +55,7 @@ def edit_campaign(campaign_id):
 
         db.session.commit()
         flash('Campaign updated successfully!', 'success')
-        return redirect(url_for('campaigns.my_campaigns'))
+        return redirect(url_for('campaigns.show_campaign', campaign_id=campaign.id))
 
     return render_template('campaigns/edit_campaign.html', form=form, campaign=campaign)
 
@@ -72,14 +72,19 @@ def delete_campaign(campaign_id):
 @campaigns_bp.route('/<int:campaign_id>')
 def show_campaign(campaign_id):
     campaign = Campaign.query.get_or_404(campaign_id)
-    character = Character.query.filter_by(campaign_id=campaign_id).all()  # Fetch characters for the campaign
-    sessions = Session.query.filter_by(campaign_id=campaign_id).all()
 
-    print(f"Campaign: {campaign}")
-    print(f"Characters: {character}")
+    page_sessions = request.args.get('page_sessions', 1, type=int)
+    page_characters = request.args.get('page_characters', 1, type=int)
+
+    sessions_pagination = Session.query.filter_by(campaign_id=campaign_id).order_by(Session.created_at.desc()).paginate(page=page_sessions, per_page=6, error_out=False)
+    characters_pagination = Character.query.filter_by(campaign_id=campaign_id).paginate(page=page_characters, per_page=6, error_out=False)
+
+    sessions = sessions_pagination.items
+    characters = characters_pagination.items
 
     return render_template('campaigns/show_campaign.html', campaign=campaign, sessions=sessions,
-                           characters=character)
+                           characters=characters, sessions_pagination=sessions_pagination,
+                           characters_pagination=characters_pagination)
 
 
 @campaigns_bp.route('/my_campaigns', methods=['GET'])
@@ -94,14 +99,18 @@ def my_campaigns():
         flash('User not found', 'danger')
         return redirect(url_for('auth.login_user'))
 
-    campaigns = Campaign.query.filter_by(creator_id=user.id).all()
-    return render_template('campaigns/my_campaigns.html', campaigns=campaigns)
+    page = request.args.get('page', 1, type=int)
+    per_page = 3
+    campaigns_pagination = Campaign.query.filter_by(creator_id=user.id).paginate(page, per_page, False)
+    campaigns = campaigns_pagination.items
+
+    return render_template('campaigns/my_campaigns.html', campaigns=campaigns, pagination=campaigns_pagination)
 
 
 @campaigns_bp.route('/join_campaign', methods=['GET', 'POST'])
 def join_campaign():
     user_id = session.get('curr_user')
-    print(f"user_id from session: {user_id}")  # Debug print
+    print(f"user_id from session: {user_id}")
 
     if not user_id:
         flash('Please log in to join campaigns', 'danger')
@@ -133,37 +142,49 @@ def join_campaign():
     return render_template('campaigns/join_campaign_form.html', characters=characters, campaigns=campaigns)
 
 
+@campaigns_bp.route('/leave_campaign', methods=['POST'])
+def leave_campaign():
+    character_id = request.form.get('character_id')
+    character = Character.query.get(character_id)
 
-@campaigns_bp.route('/leave_campaign/<int:character_id>', methods=['POST'])
-def leave_campaign(character_id):
-    user_id = session.get('curr_user')
-    print(f"user_id from session: {user_id}")  # Debug print
-    if not user_id:
-        flash('Please log in to join campaigns', 'danger')
-        return redirect(url_for('auth.login_user'))
+    if character and character.user_id == session.get('curr_user'):
+        character.campaign_id = None
+        db.session.commit()
+        flash('You have left the campaign.', 'success')
+    else:
+        flash('Invalid operation.', 'danger')
 
-    character = Character.query.get_or_404(character_id)
-
-    # Ensure that the logged-in user owns the character
-    if character.user_id != g.user.id:
-        flash("You do not have permission to leave this campaign with this character.", "danger")
-        return redirect(url_for('campaigns.participating_campaigns'))
-
-    # Set the character's campaign_id to None (or delete character if necessary)
-    character.campaign_id = None
-    db.session.commit()
-
-    flash("Character has left the campaign.", "success")
     return redirect(url_for('campaigns.participating_campaigns'))
 
 
 @campaigns_bp.route('/participating_campaigns')
 def participating_campaigns():
     user_id = session.get('curr_user')
-    print(f"user_id from session: {user_id}")  # Debug print
+    print(f"user_id from session: {user_id}")
     if not user_id:
         flash('Please log in to join campaigns', 'danger')
         return redirect(url_for('auth.login_user'))
-    # Fetch campaigns that the current user is participating in
-    campaigns = Campaign.query.filter(Campaign.characters.any(user_id=g.user.id)).all()
-    return render_template('campaigns/participating_campaigns.html', campaigns=campaigns)
+
+    page = request.args.get('page', 1, type=int)
+    characters_pagination = Character.query.filter_by(user_id=user_id).paginate(page=page, per_page=3, error_out=False)
+
+    return render_template('campaigns/participating_campaigns.html', characters_pagination=characters_pagination)
+
+
+@campaigns_bp.route('/remove_character', methods=['POST'])
+def remove_character():
+    character_id = request.form.get('character_id')
+    campaign_id = request.form.get('campaign_id')
+    character = Character.query.get(character_id)
+    campaign = Campaign.query.get(campaign_id)
+
+    if character and campaign and g.user.id == campaign.creator_id:
+        character.campaign_id = None
+        db.session.commit()
+        flash('Character has been removed from the campaign.', 'success')
+    else:
+        flash('Invalid operation.', 'danger')
+
+    return redirect(url_for('campaigns.show_campaign', campaign_id=campaign_id))
+
+

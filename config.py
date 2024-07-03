@@ -12,6 +12,7 @@ class Config:
     SQLALCHEMY_ECHO = False
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     API_URL = os.getenv('API_URL')
+    API_TOKEN = os.getenv('API_TOKEN')
 
 
 config = Config()

@@ -21,6 +21,7 @@ class Character(db.Model):
     name = Column(String(30), nullable=False)
     alias = Column(String(100), nullable=False)
     look = Column(String(2000), nullable=True)
+    image_url = Column(String(2000), nullable=True)  # Add this line
 
     image = Column(String(2000), nullable=True)
 

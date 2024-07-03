@@ -15,6 +15,7 @@ class CreateCharacterForm(FlaskForm):
     name = StringField('Character Name', validators=[DataRequired()])
     alias = StringField('Alias', validators=[DataRequired()])
     look = StringField('Appearance', validators=[Optional()])
+    image_url = StringField('Image URL', validators=[Optional(), URL()])
 
     heritage = SelectField('Heritage', validators=[DataRequired()], choices=[])
     background = SelectField('Background', validators=[DataRequired()], choices=[])

@@ -2,6 +2,19 @@
 
 /*HOMEPAGE*/
 
+
+
+.homepage-container{
+    background-image: url("../image/blades_background_hd.png");
+    background-size: cover;
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+
+    overflow: auto;
+    margin-top:0;
+}
+
 .card-count{
     background-color: rgba(12, 26, 41, 0.8);
     margin: 10px;
@@ -12,17 +25,8 @@
 
 }
 
-.homepage-container{
-    background-image: url("../image/blades_background_hd.png");
-    background-size: cover;
-    height: 94vh;
-    background-position: top;
-    max-width: 100%;
-}
-
-
-.count-cards{
-    margin-top: 200px;
+.card-count{
+    margin-bottom:50px;
 }
 
 
@@ -50,18 +54,9 @@
 }
 
 
-.count-card-title{
+.card-count-title{
      font-size: 30px;
 }
-
-
-/*.count-card-text, p{*/
-/*    font-size: 70px;*/
-
-/*}*/
-
-
-
 
 
 
@@ -90,18 +85,9 @@ body {
   object-fit: cover;
 }
 
-.default-background {
-    background-image: url("../backgrounds/default_back.jpg");
-}
-
-.campaign-background {
-    background-image: url("../backgrounds/campaign_back.jpg");
-}
-
 
 .dropdown-item {
-  background-color: #5684a9;
-  color: white;
+   background: linear-gradient(45deg, #1D3853, #8EBEE2, #2B4F6E, #5A87A8);  color: white;
   /*padding: 10px;*/
   border: 1px solid #ffffff; /* White border */
   border-radius: 5px; /* Adjust the radius as needed */
@@ -113,10 +99,11 @@ body {
     margin: 0;
 }
 
-
 .custom-navbar {
-  background-color: #1d3853; /* Custom background color */
+    background: linear-gradient(45deg, #1D3853, #8EBEE2, #2B4F6E, #5A87A8);
+
 }
+
 
 .custom-navbar .navbar-brand,
 .custom-navbar .nav-link {
@@ -124,14 +111,49 @@ body {
 }
 
 .custom-navbar .nav-link:hover {
-  color: #74a5c3; /* Slightly lighter on hover */
+  color: #2B4F6E; /* Slightly lighter on hover */
 }
 
 .custom-navbar .brand-logo {
-  width: 30px; /* Adjust the width as needed */
-  height: 30px; /* Adjust the height as needed */
+  width: 40px; /* Adjust the width as needed */
+  height: 40px; /* Adjust the height as needed */
   margin-right: 10px; /* Space between logo and text */
 }
+
+
+/*WELCOME PAGE CARDS*/
+.main-page-card-count{
+    background-color: rgba(12, 26, 41, 0.8);
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 1px solid #ffffff; /* White border */
+
+}
+
+.main-page-card-count{
+    margin-bottom:50px;
+}
+
+
+.main-page-card-count:hover {
+    transform: translateY(-10px); /* Move the card up on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a larger shadow on hover */
+}
+
+.homepage-h1{
+    font-size: 20px;
+}
+
+
+
+.bird {
+    position: absolute;
+    width: 50px; /* Adjust the size of the birds */
+    height: auto;
+}
+
 
 
 
@@ -174,7 +196,7 @@ h4 {
   border: 2px solid #b1e3fa; /* Custom border color */
   color: #b9e9fd; /* Custom text color */
   padding: 10px 20px; /* Adjust padding as needed */
-  font-size: 0.7em; /* Adjust font size as needed */
+  font-size: 1rem; /* Adjust font size as needed */
   border-radius: 5px; /* Adjust border radius as needed */
   cursor: pointer; /* Change cursor to pointer on hover */
   text-align: center;
@@ -192,9 +214,18 @@ h4 {
 }
 
 /*SIGN UP FORM*/
+.sign-up {
+    background-image: url("../backgrounds/duskvol-map.jpg");
+    /*background-size: cover;*/
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+}
 
-.sign-form {background-color: rgba(131, 177, 211, 0.8);
-  color: white;
+
+.sign-form {background-color: rgba(131, 177, 211, 0.9);
+  color: #2B4F6E;
+    font-size: 20px;
 }
 
 .sign-up{
@@ -214,8 +245,15 @@ h4 {
     max-width: 400px;
 }
 
+
+
+
 .main-loging-bg{
-    height: 100vh;
+    background-image: url("../image/blades_background_hd.png");
+    background-size: cover;
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
 }
 
 /*USER PROFILE*/
@@ -270,15 +308,24 @@ h4 {
 /* Edit Profile Form Styles */
 
 .edit-profile{
-  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: 1px solid #5684a9;
   border-radius: 20px;
   padding: 20px;
   margin-top: 80px;
-  background-color: #8da6ce;
+  background-color: rgba(203, 167, 115, 0.8); /* Add transparency with RGBA */
+  text-align: center;
 }
 
+
+.profile-edit{
+    background-image: url("../backgrounds/duskvol.jpg");
+    /*background-size: cover;*/
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+
+}
 
 .edit-btn-area {
 
@@ -294,15 +341,7 @@ h4 {
   z-index: 1050;
 }
 
-/* Create/edit campaignForm Styles */
 
-.campaign{
-  height: 100vh;
-  background-image: url("../backgrounds/campaign_back.jpg");
-  background-size: cover;
-  background-position: top;
-
-}
 
 .campaign-container h2 {
     text-align: center;
@@ -354,17 +393,17 @@ h4 {
 
 /* campaigns Styles */
 
-.my-campaign-background {
-    background-image: url("../backgrounds/navy_blue_hue_image.jpg"); /* Update this path to your actual image path */
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
+/*.my-campaign-background {*/
+/*    background-image: url("../backgrounds/navy_blue_hue_image.jpg"); !* Update this path to your actual image path *!*/
+/*    background-size: cover;*/
+/*    background-position: center;*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    z-index: -1;*/
+/*}*/
 .my-camp-container {
     position: relative;
     z-index: 1;
@@ -401,6 +440,32 @@ h4 {
 /*    background-color: #83B1D3;;*/
 /*}*/
 
+
+
+/*ALL CAMPAIGNS DESIGN*/
+.campaigns-bg{
+ background-image: url("../backgrounds/campaign_back.jpg");
+    background-size: cover;
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+
+}
+
+.fixed-size-image-campaigns {
+    width: 100%; /* Adjust width as needed */
+    height: 200px; /* Adjust height as needed */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+.message-empty {
+    background-color:white;
+    color:#23829F;
+    font-size:30px;
+    border: 1px solid #ACFAFD;
+    border-radius: 8px;
+    justify-content: center;
+}
  /*CARDS CAMPAIGN*/
 
 .campaign-list {
@@ -450,6 +515,10 @@ h4 {
 
 }
 
+.btn-delete{
+    color: red;
+    margin-right: 20px;
+}
 
 .card-buttons .btn {
     font-size: 0.8em;
@@ -484,7 +553,48 @@ h4 {
 .card-text:last-child{
     margin-bottom: -20px;
 }
+
+/* CREATE CAMPAIGN PAGE*/
+
+.create-campaign {
+    background-image: url("../backgrounds/default_back.jpg");
+    /*background-size: cover;*/
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+}
+
+.camp-create{
+    background-color: rgba(31, 121, 142, 0.8); /* Transparent background */
+    color:white;
+     border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.cr-camp-text{
+    color:white;
+}
 /* SHOW CAMPAIGN PAGE*/
+
+.show-campaign{
+     /*background-image: url("../backgrounds/duskvol-map.jpg");*/
+    /*background: linear-gradient(45deg, #FFE4C4, #DAA520, #FAFAD2, #FFE4B5, #FFDAB9, #F4A460,#F5DEB3);*/
+    /*background: linear-gradient(45deg, #ADD8E6, #87CEEB, #B0E0E6, #AFEEEE, #E0FFFF, #B0C4DE, #D3D3D3);*/
+    /*background: linear-gradient(45deg, #B0E0E6, #ADD8E6, #87CEFA, #87CEEB, #00BFFF, #1E90FF, #6495ED);*/
+    background: linear-gradient(45deg, #A7C7E7, #B3D9FF, #99CCFF, #C2E0FF, #D1EEFF, #E6F7FF, #B0E0E6);
+
+    background-size: cover;
+    height: 94vh;
+    /*background-position: top;*/
+    max-width: 100%;
+    /*background-repeat: repeat; !* Repeat the background image *!*/
+    overflow: auto;
+
+}
+
+
 
 .text-shadow {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -574,8 +684,29 @@ h4 {
 
 /*NEW SESSION STYLE*/
 .sessions{
-    background-color: #83B1D3;
+    background: linear-gradient(to bottom, #83B1D3, #1D3853);
 }
+
+.card-session-create {
+    width: 400px; height:500px;
+    background-color: #F3ECD9;
+    border: 1px solid #D9C195; /* Light gray border */
+    border-radius: 20px; /* Rounded corners */
+
+}
+.card-header-create{
+    background-color: #D9C195; /* White color with 90% opacity */
+    padding: 5px;
+    border: 1px solid #D9C195; /* Light gray border */
+    border-radius: 5px;
+    text-align: center;
+}
+
+.session-create .card-body {
+    padding-bottom: 0.5rem; /* Adjust this value as needed */
+    color:#020226;
+}
+
 .card {
     border-radius: 15px;
     overflow: hidden;
@@ -615,7 +746,7 @@ h4 {
 .session-header{
     margin-bottom: 20px;
     font-size: 2rem;
-    background-color: #1d3853;
+    background: linear-gradient(to right,#8EBEE2,#5A87A8, #2B4F6E);
     color: white;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -654,42 +785,17 @@ h4 {
 .characters-header {
     margin-bottom: 20px;
     font-size: 2rem;
-    background-color: #83B1D3;
+    background: linear-gradient(to right,#2B4F6E,#5A87A8,#8EBEE2);
     color: white;
     border: 1px solid #ccc;
     border-radius: 8px;
 }
 
 .characters{
-background-color: #1D3853;;
+    background: linear-gradient(to bottom, #1D3853, #83B1D3);
 }
 
 
-/*.custom-characters-btn {*/
-/*    font-size: 3rem;*/
-/*    padding: 4rem 6rem;*/
-/*    background-color: #1D3853;*/
-/*    margin: 20px;*/
-/*}*/
-
-.character-circle {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-
-.character-name {
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 5px 10px;
-    border-radius: 5px;
-}
 
 
 
@@ -723,17 +829,18 @@ background-color: #1D3853;;
 
 /*CREATE CHARACTER*/
 
-.create-character{
-    margin-top: 50px;
-}
+/*.create-character{*/
+/*    margin-top: 50px;*/
+/*}*/
 
 .character-form-group{
     margin-left: 20px;
 }
 
-.creation{
-    background-image: url("../image/blades_background_hd.png");
-    background-size: cover;
+.create-character{
+
+    background-image: url("../backgrounds/duskvol-map.jpg");
+    /*background-size: cover;*/
     height: 94vh;
     background-position: top;
     max-width: 100%;
@@ -934,10 +1041,31 @@ background-color:#F08080;
 }
 
 .character{
-    background-image: url("/static/backgrounds/duskvol.jpg");
+    /*background-image: url("/static/backgrounds/duskvol-map.jpg");*/
+    background: linear-gradient(45deg, #0F1C2E, #5D6F8A, #1B324A, #3A5973, #5B7E9A);
     height: 94vh;
-    background-position: top;
     max-width: 100%;
+    overflow: auto;
+}
+.profile-polaroid{
+    width: 600px;
+    padding: 10px;
+    background: linear-gradient(135deg, #f5f5dc, #d2b48c);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transform: rotate(-5deg);
+    position: relative;
+    margin: 20px auto;
+    font-style: italic;
+    font-size: 30px;
+    border: 10px solid white;
+
+}
+
+
+.profile-polaroid:hover {
+    transform: rotate(0deg); /* Reset inclination on hover for effect */
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 
@@ -975,7 +1103,7 @@ background-color:#F08080;
 }
 
 .polaroid {
-    width: 200px; /* Adjust size as needed */
+    width: 600px; /* Adjust size as needed */
     padding: 10px;
     background: white;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
@@ -983,13 +1111,16 @@ background-color:#F08080;
     transform: rotate(-5deg); /* Slightly inclined position */
     position: relative;
     margin: 20px auto;
+    font-style: italic;
+    font-size: 30px;
 }
 
 .polaroid img {
-    width: 100%;
-    height: auto;
+
     display: block;
     margin: 0 auto 10px auto;
+
+
 }
 
 .polaroid-caption {
@@ -1002,7 +1133,7 @@ background-color:#F08080;
     top: -10px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 24px;
+    font-size: 40px;
     color: red; /* Color of the thumbtack */
 }
 
@@ -1011,12 +1142,22 @@ background-color:#F08080;
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
-.stress-div, .trauma-div{
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a semi-transparent background */
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 10px; /* Rounded corners */
+.fixed-size-image-profile {
+    width: 400px; /* Set the desired width */
+    height: 500px; /* Set the desired height */
+    object-fit: cover; /* This ensures the image covers the specified dimensions without distortion */
 }
 
+.stress-div, .trauma-div{
+    background-color: rgba(255, 255, 255, 0.9); /* Optional: Add a semi-transparent background */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+
+}
+
+.progress-value-numbers{
+    color:#1D3853 ;
+}
 
 
 .edit-char{
@@ -1057,12 +1198,7 @@ background-color:#F08080;
         align-items: center;
         margin-bottom: 1rem;
     }
-    .character-image {
-        border-radius: 50%;
-        width: 170px;
-        height: 200px;
-        object-fit: cover;
-    }
+
     .character-name {
         margin-top: 0.5rem;
         text-align: center;
@@ -1195,15 +1331,18 @@ background-color:#F08080;
 }
 
 .character-list {
-    background-color: rgba(214, 179, 123, 0.8); /* Adjust the last value for more or less transparency */
+    background: linear-gradient(45deg, rgba(214, 179, 123, 0.9), rgba(214, 179, 123, 0.75), rgba(214, 179, 123, 0.6), rgba(214, 179, 123, 0.45), rgba(214, 179, 123, 0.3));
+    border-radius: 10px;
 }
 
 .my-char-container {
-    background-color: rgba(214, 179, 123, 0.8); /* Adjust the last value for more or less transparency */
+    background: linear-gradient(45deg, rgba(214, 179, 123, 0.9), rgba(214, 179, 123, 0.75), rgba(214, 179, 123, 0.6), rgba(214, 179, 123, 0.45), rgba(214, 179, 123, 0.3));
+    border-radius: 10px;
 }
 
 .char-text{
     font-size: 60px;
+
 }
 
 /* Edit Stress Form */
@@ -1286,4 +1425,296 @@ background-color:#F08080;
     height: 94vh;
     background-position: top;
     max-width: 100%;
+}
+
+/* MY CHARACTERS*/
+
+
+.polaroid-all-characters{
+    width: 300px; /* Adjust size as needed */
+    padding: 10px;
+    background: #F3ECD9;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    text-align: center;
+    transform: rotate(-5deg); /* Slightly inclined position */
+    position: relative;
+    margin: 20px auto;
+}
+
+.polaroid-all-characters img {
+    /*width: 80%;*/
+    /*height: auto;*/
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+.polaroid-caption-all-characters {
+    font-weight: bold;
+    margin-top: 10px;
+    font-style: italic;
+    font-size: 20px;
+
+}
+
+.pin-icon {
+    position: absolute;
+    top: -55px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 60px;
+    color: red; /* Color of the thumbtack */
+}
+
+.polaroid-all-characters:hover {
+    transform: rotate(0deg); /* Reset inclination on hover for effect */
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.fixed-size-image-all-characters {
+    width: 150px; /* Set the desired width */
+    height: 200px; /* Set the desired height */
+    object-fit: cover; /* This ensures the image covers the specified dimensions without distortion */
+}
+
+/*Sessions*/
+
+.session-create{
+    background-image: url("/static/backgrounds/character-bg copy.jpg");
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+}
+
+
+/*JOIN CAMPAIGN FORM*/
+
+.join-campaign{
+    background-image: url("/static/image/homepage.jpg");
+    height: 94vh;
+
+    max-width: 100%;
+}
+
+
+/*SHOW CAMPAIGN*/
+   .character-card {
+        width: 30%;
+        margin: 1%;
+        position: relative;
+    }
+
+    .character-circle {
+        width: 100%;
+        padding-bottom: 100%; /* Aspect ratio 1:1 */
+        background-size: cover;
+        background-position: center;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    .character-name-overlay {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 5px;
+        text-align: center;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+        position: absolute;
+    }
+
+      .custom-pagination .page-item .page-link {
+        color: #343a40; /* Dark color for pagination links */
+        background-color: #f8f9fa; /* Light grey background */
+        border: 1px solid #dee2e6; /* Light grey border */
+        margin: 0 2px; /* Spacing between pagination items */
+        border-radius: 4px; /* Rounded corners */
+    }
+
+    .custom-pagination .page-item.active .page-link {
+        background-color: #343a40; /* Dark background for active page */
+        color: #fff; /* White text for active page */
+        border: 1px solid #343a40; /* Dark border for active page */
+    }
+
+    .custom-pagination .page-item.disabled .page-link {
+        background-color: #e9ecef; /* Disabled background color */
+        color: #6c757d; /* Disabled text color */
+        border: 1px solid #dee2e6; /* Light grey border */
+    }
+
+    .custom-pagination .page-link:hover {
+        background-color: #e9ecef; /* Hover background color */
+        color: #343a40; /* Hover text color */
+    }
+
+    /*PARTICIPATING CAMPAIGNS*/
+
+
+
+.participating{
+    background-image: url("/static/backgrounds/character-bg copy.jpg");
+    background-size: cover;
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+    background-repeat: repeat; /* Repeat the background image */
+    overflow: auto;;
+}
+
+
+        .participating-polaroid-card {
+        background-color: rgba(255, 255, 255, 0.8); /* Adjust the last value for more or less transparency */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        transition: transform 0.2s;
+        cursor: pointer;
+        text-align: center;
+    }
+    .participating-polaroid-card:hover {
+        transform: scale(1.05);
+    }
+
+    .polaroid-image {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin: 0 auto;
+    }
+
+    .participating-pagination {
+        display: flex;
+        justify-content: center;
+    }
+    .participating-pagination .btn {
+        margin-bottom: 15px;
+    }
+
+    .row.justify-content-left {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .col-md-4 {
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .participating-camp{
+        padding:20px;
+    }
+    .part-camp{
+        font-size:50px;
+    }
+
+    .character-card {
+        position: relative;
+    }
+
+    .delete-character-overlay {
+        top: 0;
+        right: 0;
+        cursor: pointer;
+        color: rgba(220, 53, 69, 0.9);
+        font-size: 20px;
+
+    }
+
+
+ .all-camps .polaroid-all-campaigns {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.all-camps .polaroid-all-campaigns:hover {
+    box-shadow: 4px 4px 16px rgba(0,0,0,0.2);
+}
+
+.all-camps .fixed-size-image-all-campaigns {
+    width: 100%;
+    height: auto;
+}
+
+.all-camps .polaroid-caption-all-campaigns {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.all-camps .pin-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: red;
+}
+
+.card-buttons {
+    top: 10px;
+    right: 10px;
+}
+
+.all-camps{
+    background-image: url("/static/backgrounds/character-bg copy.jpg");
+    background-size: cover;
+    height: 94vh;
+    background-position: top;
+    max-width: 100%;
+    background-repeat: repeat; /* Repeat the background image */
+    overflow: auto;;
+}
+
+
+
+.all-chars .polaroid-all-characters {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 10px;
+
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.all-chars .polaroid-all-characters:hover {
+    box-shadow: 4px 4px 16px rgba(0,0,0,0.2);
+}
+
+.all-chars .fixed-size-image-characters {
+    width: 100%;
+    height: auto;
+}
+
+.all-chars .polaroid-caption-all-characters {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.card-body {
+    text-align: center;
+    padding: 10px; /* Added padding to ensure text doesn't touch the border */
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+}
+
+.card-buttons {
+    top: 10px;
+    right: 10px;
+}
+
+.camp-pagination {
+    text-align: center;
+}
+
+.camp-pagination .btn {
+    margin: 5px;
 }

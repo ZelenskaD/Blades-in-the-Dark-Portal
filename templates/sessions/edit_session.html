@@ -5,10 +5,10 @@ Edit Session
 {% endblock %}
 
 {% block content %}
-<div class="container my-5">
-    <div class="card shadow-lg">
-        <div class="card-header bg-primary text-white">
-            <h2 class="mb-0">Edit Session</h2>
+<div class="session-create container d-flex justify-content-center">
+    <div class="card-session-create w-50 shadow-lg mt-5">
+        <div class="card-header-create text-center ">
+            <h2 >Edit Session</h2>
         </div>
         <div class="card-body">
             <form method="POST" action="{{ url_for('session.edit_session', session_id=session.id) }}">

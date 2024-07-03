@@ -7,8 +7,7 @@ from flask import Blueprint, render_template, flash, url_for, redirect, request,
 from form_requests.session_forms import AddNewSession, EditSessionForm
 from schemas.session_models import Session
 from schemas.campaign_models import Campaign
-# from blueprints.auth_routes import  CURR_USER_KEY
-# Define the absolute path to the template folder
+
 template_folder_path = os.path.join(os.path.dirname(__file__), '..', 'templates', 'sessions')
 
 print("Template folder absolute path:", template_folder_path)
@@ -23,7 +22,7 @@ def add_session(campaign_id):
 
     if g.user is None or g.user.id != campaign.creator_id:
         flash('You do not have permission to add a session to this campaign', 'danger')
-        return redirect(url_for('homepage.show_main_page'))
+        return redirect(url_for('homepage.show_homepage_or_main_page'))
 
     if form.validate_on_submit():
         current_time = datetime.utcnow()
@@ -51,7 +50,7 @@ def edit_session(session_id):
 
     if g.user is None or g.user.id != campaign.creator_id:
         flash('You do not have permission to edit this session', 'danger')
-        return redirect(url_for('homepage.show_main_page'))
+        return redirect(url_for('homepage.show_homepage_or_main_page'))
 
     if form.validate_on_submit():
         session_obj.title = form.title.data
@@ -73,12 +72,12 @@ def delete_session(session_id):
 
     if g.user is None or g.user.id != campaign.creator_id:
         flash('You do not have permission to delete this session', 'danger')
-        return redirect(request.referrer or url_for('homepage.show_main_page'))
+        return redirect(request.referrer or url_for('homepage.show_homepage_or_main_page'))
 
     db.session.delete(session_obj)
     db.session.commit()
     flash('Session deleted successfully!', 'success')
-    return redirect(request.referrer or url_for('homepage.show_main_page'))
+    return redirect(request.referrer or url_for('homepage.show_homepage_or_main_page'))
 
 
 

@@ -3,21 +3,77 @@
 Welcome Page
 {% endblock %}
 
-
 {% block content %}
 {% if not g.user %}
 <div class="hero container-fluid">
     <h4>Welcome to</h4>
     <h1>Duskvol</h1>
+    <div class="bird-container">
+        <img src="{{ url_for('static', filename='backgrounds/raven7.gif') }}" alt="Bird" class="bird" id="bird1">
+    </div>
+       <div class="bird-container">
+        <img src="{{ url_for('static', filename='backgrounds/raven7.gif') }}" alt="Bird" class="bird" id="bird2">
+       </div>
+
+      <div class="bird-container">
+        <img src="{{ url_for('static', filename='backgrounds/raven2.gif') }}" alt="Bird" class="bird" id="bird3">
+       </div>
+
+      <div class="bird-container">
+        <img src="{{ url_for('static', filename='backgrounds/raven2.gif') }}" alt="Bird" class="bird" id="bird4">
+       </div>
+      <div class="bird-container">
+        <img src="{{ url_for('static', filename='backgrounds/raven2.gif') }}" alt="Bird" class="bird" id="bird5">
+       </div>
+
+      <div class="bird-container">
+        <img src="{{ url_for('static', filename='backgrounds/raven2.gif') }}" alt="Bird" class="bird" id="bird6">
+       </div>
+
     <div class="row justify-content-md-center">
         <div class="col-md-6 box">
             <h4>Create your own character, make new campaigns, meet new people and explore the World of Shadows together with friends!</h4>
         </div>
     </div>
     <div class="button-container">
-        <a href="{{ url_for('auth.show_sign_up_form') }}" class="btn btn-primary">Sign Up</a>
+        <a href="{{ url_for('auth.show_sign_up_form') }}" class="btn  btn-primary">Sign Up</a>
     </div>
+    <div class="main-page-count-cards row justify-content-center mt-5">
+         <div class="col-md-2">
+            <div class="main-page-card-count">
+                <div class="main-page-card-body">
+                      <h2 style="color:white; " class="main-page-count-card-title text-center">Users</h2>
+                       <p style="color:white;font-size:40px;" class="main-page-count-card-text text-center">{{ user_count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="main-page-card-count">
+                <div class="main-page-card-body">
+                      <h2 style="color:white; " class="main-page-count-card-title text-center">Characters</h2>
+                      <p style="color:white; font-size:40px;" class="main-page-count-card-text text-center">{{ character_count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="main-page-card-count">
+                <div class="main-page-card-body">
+                     <h2 style="color:white; " class="main-page-count-card-title text-center">Campaigns</h2>
+                       <p style="color:white;font-size:40px;" class="main-page-count-card-text text-center">{{ campaign_count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="main-page-card-count">
+                <div class="main-page-card-body">
+                    <h2 style="color:white; " class="main-page-count-card-title text-center">Playbooks</h2>
+                    <p style="color:white;font-size:40px;" class="main-page-count-card-text text-center">7</p>
+                </div>
+            </div>
+        </div>
 </div>
+</div>
+
 {% else %}
     <h4>Welcome Back!</h4>
 {% endif %}

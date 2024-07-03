@@ -45,7 +45,7 @@ def show_sign_up_form():
             )
             do_login(user)
             flash(f"Welcome, {user.username}! Your account was successfully created.", "success")
-            return redirect(url_for('homepage.show_main_page'))
+            return redirect(url_for('homepage.show_homepage_or_main_page'))
 
         except IntegrityError:
             flash("Username or email already taken", 'danger')
@@ -66,7 +66,7 @@ def login_user():
             do_login(user)
             session['curr_user'] = user.id
             flash(f"Welcome back, {user.username}!", "success")
-            return redirect(url_for('homepage.show_main_page'))  # Use endpoint name
+            return redirect(url_for('homepage.show_homepage_or_main_page'))  # Use endpoint name
         else:
             flash("User not found. Check your password or username.", 'danger')
 
@@ -79,7 +79,7 @@ def logout():
     if CURR_USER_KEY in session:
         del session[CURR_USER_KEY]
     flash('Successfully logged out!', 'success')
-    return redirect(url_for('homepage.show_main_page'))
+    return redirect(url_for('homepage.show_homepage_or_main_page'))
 
 
 
