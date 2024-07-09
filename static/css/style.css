@@ -1,46 +1,137 @@
 @import url("https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap");
 
-/*HOMEPAGE*/
+/* Global Styles */
+body {
+    background-color: #050a13;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: "Sedan SC", serif;
+}
 
+/* General Containers */
+.container {
+    margin-top: -20px;
+}
 
+.header, .box, .campaign-container h2, .campaign-container .form-group, .campaign-container .form-control, .edit-profile, .character, .polaroid, .character-card, .card, .card-body, .card-buttons, .table, .character-list {
+    text-align: center;
+}
 
-.homepage-container{
-    background-image: url("../image/blades_background_hd.png");
+.header-image, .card-hero, .card-image, .card-img-top, .profile-character-picture, .fixed-size-image-profile, .banner-campaign, .default-image-model, .image-users-ai, .session-create, .edit-char, .character-form-group, .character-circle, .polaroid-all-characters img, .polaroid-caption-all-characters, .character-card, .polaroid, .polaroid img, .fixed-size-image-all-characters {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+
+.fixed-size-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.hero, .sign-up, .main-loging-bg, .profile-edit, .campaigns-bg, .character, .sessions, .joined-img-fluid, .edit-char, .all-chars, .create-campaign, .show-campaign, .chosen-playbook, .join-campaign, .participating, .all-camps {
     background-size: cover;
     height: 94vh;
     background-position: top;
     max-width: 100%;
-
     overflow: auto;
-    margin-top:0;
 }
 
-.card-count{
-    background-color: rgba(12, 26, 41, 0.8);
-    margin: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    border: 1px solid #ffffff; /* White border */
-
+/* Homepage */
+.homepage-container {
+    background-image: url("../image/blades_background_hd.png");
+    margin-top: 0;
 }
 
-.card-count{
-    margin-bottom:50px;
-}
-
-
-.card-count:hover {
-    transform: translateY(-10px); /* Move the card up on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a larger shadow on hover */
+.homepage-h2, .homepage-h1 {
+    color: #0C1A29;
+    margin-top: 100px;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .homepage-h2 {
-    color:#0C1A29 ; /* White color for the heading */
-    margin-bottom: 20px;
-    animation: fadeIn 1s ease-in-out;
-     margin-top: 100px;
     font-size: 60px;
+}
+
+.homepage-h1 {
+    font-size: 20px;
+}
+
+.card-count, .main-page-card-count {
+    background-color: rgba(12, 26, 41, 0.8);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    margin: 10px 10px 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-count:hover, .main-page-card-count:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-count-title {
+    font-size: 30px;
+}
+
+/* Navbar */
+.custom-navbar {
+    background: linear-gradient(45deg, #1D3853, #8EBEE2, #2B4F6E, #5A87A8);
+}
+
+.custom-navbar .navbar-brand, .custom-navbar .nav-link {
+    color: white;
+}
+
+.custom-navbar .nav-link:hover {
+    color: #2B4F6E;
+}
+
+.custom-navbar .brand-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Profile Picture */
+.profile-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+/* Dropdown */
+.dropdown-item {
+    background: linear-gradient(45deg, #1D3853, #8EBEE2, #2B4F6E, #5A87A8);
+    color: white;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+}
+
+.dropdown-menu {
+    padding: 0;
+    margin: 0;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #1d3853;
+    border: 2px solid #b1e3fa;
+    color: #b9e9fd;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: #a1d3ea;
+    border-color: #a1d3ea;
 }
 
 /* Keyframes for fade in animation */
@@ -53,478 +144,208 @@
     }
 }
 
-
-.card-count-title{
-     font-size: 30px;
-}
-
-
-
-body {
-  background-color: #050a13;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  font-family: "Sedan SC", serif;
-}
-
-
-.hero {
-    background-image: url("../image/blades_background_hd.png");
-    background-size: cover;
-    height: 94vh;
-    background-position: top;
-    max-width: 100%;
-
-}
-
-.profile-pic {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-
-.dropdown-item {
-   background: linear-gradient(45deg, #1D3853, #8EBEE2, #2B4F6E, #5A87A8);  color: white;
-  /*padding: 10px;*/
-  border: 1px solid #ffffff; /* White border */
-  border-radius: 5px; /* Adjust the radius as needed */
-  /*margin-bottom: 5px; !* Space between items *!*/
-}
-
-.dropdown-menu {
-    padding: 0;
-    margin: 0;
-}
-
-.custom-navbar {
-    background: linear-gradient(45deg, #1D3853, #8EBEE2, #2B4F6E, #5A87A8);
-
-}
-
-
-.custom-navbar .navbar-brand,
-.custom-navbar .nav-link {
-  color: white; /* White text */
-}
-
-.custom-navbar .nav-link:hover {
-  color: #2B4F6E; /* Slightly lighter on hover */
-}
-
-.custom-navbar .brand-logo {
-  width: 40px; /* Adjust the width as needed */
-  height: 40px; /* Adjust the height as needed */
-  margin-right: 10px; /* Space between logo and text */
-}
-
-
-/*WELCOME PAGE CARDS*/
-.main-page-card-count{
-    background-color: rgba(12, 26, 41, 0.8);
-    margin: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    border: 1px solid #ffffff; /* White border */
-
-}
-
-.main-page-card-count{
-    margin-bottom:50px;
-}
-
-
-.main-page-card-count:hover {
-    transform: translateY(-10px); /* Move the card up on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a larger shadow on hover */
-}
-
-.homepage-h1{
-    font-size: 20px;
-}
-
-
-
-.bird {
-    position: absolute;
-    width: 50px; /* Adjust the size of the birds */
-    height: auto;
-}
-
-
-
-
-h1,
-h4 {
-  font-family: "Sedan SC", serif;
-  font-weight: 400;
-  font-style: normal;
-  margin: 0;
-}
-
-.hero h4 {
-  padding-top: 10px;
-  font-size: 4em;
-  text-align: center;
-}
-
-.hero h1 {
-  text-align: center;
-  font-size: 8em;
-  margin-top: 40px;
-}
-.box {
-  text-align: center;
-}
-
-.box h4 {
-  text-align: center;
-  font-size: 2em;
-  color: #b1e3fa;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px; /* Adjust padding to reduce the height */
-  border-radius: 10px; /* Adjust border radius as needed */
-  display: inline-block; /* Make the box fit the content */
-  border: 2px solid #b1e3fa; /* Add border with color */
-}
-
-.btn-primary {
-  background-color: #1d3853; /* Custom background color */
-  border: 2px solid #b1e3fa; /* Custom border color */
-  color: #b9e9fd; /* Custom text color */
-  padding: 10px 20px; /* Adjust padding as needed */
-  font-size: 1rem; /* Adjust font size as needed */
-  border-radius: 5px; /* Adjust border radius as needed */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  text-align: center;
-  text-decoration: none; /* Remove underline from links */
-  display: inline-block; /* Ensure the button respects padding */
-}
-.button-container {
-  padding-top: 30px;
-  text-align: center;
-}
-
-.btn-primary:hover {
-  background-color: #a1d3ea; /* Slightly darker color on hover */
-  border: 2px solid #a1d3ea; /* Matching border color on hover */
-}
-
-/*SIGN UP FORM*/
-.sign-up {
-    background-image: url("../backgrounds/duskvol-map.jpg");
-    /*background-size: cover;*/
-    height: 94vh;
-    background-position: top;
-    max-width: 100%;
-}
-
-
-.sign-form {background-color: rgba(131, 177, 211, 0.9);
-  color: #2B4F6E;
-    font-size: 20px;
-}
-
-.sign-up{
-    height: 100vh;
-}
-/*LOGIN FORM*/
-
-.login-form {
-    background-color: rgba(131, 177, 211, 0.8);
-    color: white;
-    padding: 20px;
-    margin: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-}
-
-
-
-
-.main-loging-bg{
-    background-image: url("../image/blades_background_hd.png");
-    background-size: cover;
-    height: 94vh;
-    background-position: top;
-    max-width: 100%;
-}
-
-/*USER PROFILE*/
-.header {
-  text-align: center;
-  margin-top: 20px;
-  font-family: "Gothic A1", sans-serif; /* Ensure you have this font or replace it with another Gothic font */
-}
-
-.header-image {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  margin-bottom: 20px;
-  margin-top: -20px;
-}
-.card-hero {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
-}
-
-.card-image {
-  width: 100px;
-  height: 100px;
-  margin-top: -50px;
-  border: 3px solid white;
-}
-
-.profile-info {
-  margin-top: -50px;
-  padding: 10px;
-}
-
-.button-container {
-  margin-top: 20px;
-}
-
-.btn-edit,
-.btn-delete {
-  margin: 5px;
-}
-
-.mt-4 {
-  margin-top: 1.5rem !important;
-}
-
-.container {
-  margin-top: -20px;
-}
-
-/* Edit Profile Form Styles */
-
-.edit-profile{
-  color: white;
-  border: 1px solid #5684a9;
-  border-radius: 20px;
-  padding: 20px;
-  margin-top: 80px;
-  background-color: rgba(203, 167, 115, 0.8); /* Add transparency with RGBA */
-  text-align: center;
-}
-
-
-.profile-edit{
-    background-image: url("../backgrounds/duskvol.jpg");
-    /*background-size: cover;*/
-    height: 94vh;
-    background-position: top;
-    max-width: 100%;
-
-}
-
-.edit-btn-area {
-
-  justify-content: space-between;
-}
-
-
-
+/* Alerts */
 .alert-container {
-  position: fixed;
-  top: 60px;
-  right: 20px;
-  z-index: 1050;
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    z-index: 1050;
 }
 
-
-
-.campaign-container h2 {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 20px;
-    width: 500px;
-    color:#217996;
-
+/* Header */
+.header {
+    font-family: "Gothic A1", sans-serif;
+    margin-top: 20px;
 }
 
+/* Campaigns */
+.campaign-container .form-group, .campaign-container .form-control, .campaign-container .btn-outline-secondary, .campaign-container .btn-success {
+    border-radius: 5px;
+}
 
-.campaign-container .form-group {
-    margin-bottom: 15px;
-   font-weight: bold;
+.campaign-container .form-group, .campaign-container .form-control {
     width: 500px;
-    color:#1D3853;
     font-size: 1.5em;
-
 }
 
 .campaign-container .form-control {
-    border-radius: 5px;
-      border: 1px solid #83B1D3 ;
-
-
+    border: 1px solid #83B1D3;
 }
+
+.campaign-container .btn-outline-secondary, .campaign-container .btn-success {
+    border: 1px solid #ACFAFD;
+}
+
 .campaign-container .btn-outline-secondary {
-    border: 1px solid #ACFAFD ;
-
-    background-color:#3F4042;
+    background-color: #3F4042;
 }
-
 
 .campaign-container .btn-success {
-
-    background-color:#5684A9;
-      border: 1px solid #ACFAFD ;
-
+    background-color: #5684A9;
 }
-.campaign-edit-img-fluid{
+
+.campaign-edit-img-fluid {
     max-height: 300px;
-    width: auto;
     border: 1px solid #6EC0D8;
     border-radius: 10px;
-
 }
 
-
-
-/* campaigns Styles */
-
-/*.my-campaign-background {*/
-/*    background-image: url("../backgrounds/navy_blue_hue_image.jpg"); !* Update this path to your actual image path *!*/
-/*    background-size: cover;*/
-/*    background-position: center;*/
-/*    height: 100%;*/
-/*    width: 100%;*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    z-index: -1;*/
-/*}*/
-.my-camp-container {
+/* Character Cards */
+.character-card {
     position: relative;
-    z-index: 1;
+}
 
-}.camp-text {
-     font-weight: bold;
-    font-family: "Sedan SC", serif;
-    color: #217996;
-    font-size: 2em; /* Adjust the size as needed */
-    margin-top: 20px; /* Adds margin above */
-    padding: 15px; /* Adds padding inside the box */
-    background-color: #f8f9fa; /* Background color */
-    border: 1px solid #dee2e6; /* Border color */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
-    justify-content: center;
+.character-circle {
+    padding-bottom: 100%;
+    border-radius: 50%;
+}
+
+.character-name-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    position: absolute;
+}
+
+/* Participating Campaigns */
+.participating {
+    background-repeat: repeat;
+}
+
+.participating-polaroid-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s;
+    cursor: pointer;
     text-align: center;
 }
 
-
- .edit{
-     background-color:white;
-      margin: 20px;
-     padding: 30px;
-     border: 1px solid #6EC0D8; /* Border color */
-     border-radius: 10px; /* Rounded corners */
-     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
- }
- .edit, h2{
-     color:#1D3853 ;
- }
-
-/*.btn-success{*/
-/*    background-color: #83B1D3;;*/
-/*}*/
-
-
-
-/*ALL CAMPAIGNS DESIGN*/
-.campaigns-bg{
- background-image: url("../backgrounds/campaign_back.jpg");
-    background-size: cover;
-    height: 94vh;
-    background-position: top;
-    max-width: 100%;
-
+.participating-polaroid-card:hover {
+    transform: scale(1.05);
 }
 
-.fixed-size-image-campaigns {
-    width: 100%; /* Adjust width as needed */
-    height: 200px; /* Adjust height as needed */
-    object-fit: cover; /* Ensures the image covers the area without distortion */
+.polaroid-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto;
 }
 
-.message-empty {
-    background-color:white;
-    color:#23829F;
-    font-size:30px;
-    border: 1px solid #ACFAFD;
-    border-radius: 8px;
+.participating-pagination {
+    display: flex;
     justify-content: center;
 }
- /*CARDS CAMPAIGN*/
 
-.campaign-list {
+.participating-pagination .btn {
+    margin-bottom: 15px;
+}
+
+.row.justify-content-left {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-4 {
+    display: flex;
+    justify-content: center;
+}
+
+.part-camp {
+    font-size: 50px;
+}
+
+/* Characters */
+.character-list, .my-char-container {
+    background: linear-gradient(45deg, rgba(214, 179, 123, 0.9), rgba(214, 179, 123, 0.3));
+    border-radius: 10px;
+}
+
+.char-text {
+    font-size: 60px;
+}
+
+/* Miscellaneous */
+.button-container {
     margin-top: 20px;
 }
 
+.button-container .btn-edit, .button-container .btn-delete {
+    margin: 5px;
+}
+
+.character-card .delete-character-overlay {
+    color: rgba(220, 53, 69, 0.9);
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+/* Pagination */
+.custom-pagination .page-item .page-link {
+    color: #343a40;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    margin: 0 2px;
+    border-radius: 4px;
+}
+
+.custom-pagination .page-item.active .page-link {
+    background-color: #343a40;
+    color: #fff;
+    border: 1px solid #343a40;
+}
+
+.custom-pagination .page-item.disabled .page-link {
+    background-color: #e9ecef;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+}
+
+.custom-pagination .page-link:hover {
+    background-color: #e9ecef;
+    color: #343a40;
+}
+
+/* Cards */
 .card {
-    margin-top: 20px;
-    background-color: #1D3853; /* Dark theme background for cards */
-    color: white; /* Text color for better readability on dark background */
-    border: 1px solid #ACFAFD; /* Border color */
+    background-color: #1D3853;
+    color: white;
+    border: 1px solid #ACFAFD;
     border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
 }
 
 .card:hover {
-    transform: translateY(-10px); /* Lift the card up */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card h5 {
-    color: #ACFAFD; /* Title color */
-    text-align: center;
-}
-
-.card-img-top {
-    height: 200px;  /* Adjust the height as needed */
-    width: 100%;
-    object-fit: cover;  /* Ensures the image covers the entire area without distortion */
+    color: #ACFAFD;
 }
 
 .card-title {
-    font-weight: bold;
     font-family: "Sedan SC", serif;
-    text-align: center;
+    font-weight: bold;
     font-size: 2em;
 }
-.card-description{
-     color: white;
-     margin-right:5px;
-}
-.card-buttons {
-    display: inline-block;
-    top: 0;
-    right: 0;
-    margin-top: 10px;
 
-}
-
-.btn-delete{
-    color: red;
-    margin-right: 20px;
+.card-description {
+    color: white;
+    margin-right: 5px;
 }
 
 .card-buttons .btn {
     font-size: 0.8em;
     padding: 5px 10px;
     border-radius: 4px;
-    cursor: pointer;
     display: inline-block;
     align-items: center;
 }
@@ -535,678 +356,73 @@ h4 {
 
 .card-buttons .btn-primary {
     background-color: #007bff;
-    color: white;
     border: none;
 }
 
 .card-buttons .btn-danger {
     background-color: #dc3545;
-    color: white;
     border: none;
 }
-.card-body{
-    color:white;
-    padding:5px;
-    margin-right:5px;
 
-}
-.card-text:last-child{
-    margin-bottom: -20px;
+.card-buttons .btn-delete {
+    color: red;
+    margin-right: 20px;
 }
 
-/* CREATE CAMPAIGN PAGE*/
-
-.create-campaign {
-    background-image: url("../backgrounds/default_back.jpg");
-    /*background-size: cover;*/
-    height: 94vh;
-    background-position: top;
-    max-width: 100%;
+/* Campaign Backgrounds */
+.my-camp-container, .campaigns-bg, .character-container, .show-campaign, .create-campaign, .profile-edit {
+    position: relative;
+    z-index: 1;
 }
 
-.camp-create{
-    background-color: rgba(31, 121, 142, 0.8); /* Transparent background */
-    color:white;
-     border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
-}
-
-.cr-camp-text{
-    color:white;
-}
-/* SHOW CAMPAIGN PAGE*/
-
-.show-campaign{
-     /*background-image: url("../backgrounds/duskvol-map.jpg");*/
-    /*background: linear-gradient(45deg, #FFE4C4, #DAA520, #FAFAD2, #FFE4B5, #FFDAB9, #F4A460,#F5DEB3);*/
-    /*background: linear-gradient(45deg, #ADD8E6, #87CEEB, #B0E0E6, #AFEEEE, #E0FFFF, #B0C4DE, #D3D3D3);*/
-    /*background: linear-gradient(45deg, #B0E0E6, #ADD8E6, #87CEFA, #87CEEB, #00BFFF, #1E90FF, #6495ED);*/
-    background: linear-gradient(45deg, #A7C7E7, #B3D9FF, #99CCFF, #C2E0FF, #D1EEFF, #E6F7FF, #B0E0E6);
-
-    background-size: cover;
-    height: 94vh;
-    /*background-position: top;*/
-    max-width: 100%;
-    /*background-repeat: repeat; !* Repeat the background image *!*/
-    overflow: auto;
-
-}
-
-
-
+/* Text Shadows */
 .text-shadow {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.name-campaign {
-    font-size: 3rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 0;
-}
-
-.description-box {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #1D3853;
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 20px;
-    text-align: center;
-    max-width: 800px;
-    max-height: 150px;
-    overflow: auto;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.list-group-item {
+/* Character Profile */
+.profile-polaroid {
     width: 100%;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    font-family: 'YourFontFamily', sans-serif; /* Replace 'YourFontFamily' with your actual font family */
-    margin-bottom: 20px;
-}
-
-.list-group-item span {
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-style: normal;
-    display: block;
-    margin-bottom: 10px;
-}
-
-.list-group-item p {
-    font-style: italic;
-    font-size: 1.2rem;
-    margin-top: 10px;
+    max-width: 300px; /* Adjust the size as needed */
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-family: "Sedan SC", serif;
-}
-
-.list-group-item div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.list-group-item a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.list-group-item a:hover {
-    text-decoration: underline;
-}
-
-.list-group-item button {
-    color: red;
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    font-size: 1.2rem;
-}
-
-.list-group-item button:hover {
-    color: darkred;
-}
-
-
-.date{
-    font-size: 0.8em;
-}
-
-/*NEW SESSION STYLE*/
-.sessions{
-    background: linear-gradient(to bottom, #83B1D3, #1D3853);
-}
-
-.card-session-create {
-    width: 400px; height:500px;
-    background-color: #F3ECD9;
-    border: 1px solid #D9C195; /* Light gray border */
-    border-radius: 20px; /* Rounded corners */
-
-}
-.card-header-create{
-    background-color: #D9C195; /* White color with 90% opacity */
-    padding: 5px;
-    border: 1px solid #D9C195; /* Light gray border */
-    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     text-align: center;
-}
-
-.session-create .card-body {
-    padding-bottom: 0.5rem; /* Adjust this value as needed */
-    color:#020226;
-}
-
-.card {
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.card-header {
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.card-body {
-    padding: 2rem;
-}
-
-.form-label {
-    font-weight: bold;
-}
-
-.btn-primary {
-    background-color: #1D3853;
-
-}
-
-.btn-primary:hover {
-    background-color: #16334a;
-}
-
-.btn-secondary {
-    background-color: #6c757d;
-    border: none;
-}
-
-.btn-secondary:hover {
-    background-color: #5a6268;
-}
-
-.session-header{
-    margin-bottom: 20px;
-    font-size: 2rem;
-    background: linear-gradient(to right,#8EBEE2,#5A87A8, #2B4F6E);
-    color: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-
-}
-.sessions-character-container{
-    margin-left: 40px;
-}
-.btn-group-horizontal{
-    margin-left: 40px;
-}
-.custom-sessions-btn {
-    font-size: 3rem;
-    padding: 4rem 6rem;
-    background-color: #1D3853;
-    margin: 20px;
-}
-
-.name-campaign{
-    font-size: 3rem;
-    font-weight: bold;
-    text-align: center;
-}
-
-.banner-campaign{
-    height: 300px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-
-}
-
-
-/*CHARACTERS*/
-.characters-header {
-    margin-bottom: 20px;
-    font-size: 2rem;
-    background: linear-gradient(to right,#2B4F6E,#5A87A8,#8EBEE2);
-    color: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-.characters{
-    background: linear-gradient(to bottom, #1D3853, #83B1D3);
-}
-
-
-
-
-
-
-/*{PARTICIPATING  CAMPAIGNS*/
-
- .overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-align: center;
-}
-
- .joined-img-fluid{
-     height: 70vh
- }
-
- .h2-joined{
-     color: white;
- }
-
-.joined-cards{
-    height:250px;
-}
-
-
-
-
-
-/*CREATE CHARACTER*/
-
-/*.create-character{*/
-/*    margin-top: 50px;*/
-/*}*/
-
-.character-form-group{
-    margin-left: 20px;
-}
-
-.create-character{
-
-    background-image: url("../backgrounds/duskvol-map.jpg");
-    /*background-size: cover;*/
-    height: 94vh;
-    background-position: top;
-    max-width: 100%;
-}
-
-
-
-
-
-
-/*SHOW CHARACTER*/
-.profile-character-picture {
-   width: 200px;
-    height: 300px;
-    border: 2px solid #ccc;
-}
-
-.img-circle {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.progress-bar {
-    text-align: center;
-}
-
-.trauma{
-    background-color: #B22222;
-}
-
-.stress{
-    background-color: #6495ED;
-}
-
-.small-progress .progress-bar {
-    height: 20px; /* Adjust the height as needed */
-    font-size: 14px; /* Adjust the font size if needed */
-}
-.description-character p {
-    margin-bottom: 10px;
-}
-
-
-.progress-bar-stress {
-    background: repeating-linear-gradient(
-        45deg,
-        cornflowerblue,
-        cornflowerblue 10px,
-        darkblue 10px,
-        darkblue 20px
-    );
-}
-
-.progress-bar-trauma {
-    background: repeating-linear-gradient(
-        45deg,
-        red,
-        red 10px,
-        darkred 10px,
-        darkred 20px
-    );
-}
-
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 24px;
-}
-
-.disabled-message {
-    text-align: center;
-}
-
-.character{
-    background-color: rgba(255, 255, 255, 0.2); /* Adjust the color and transparency as needed */
-}
-
-.contacts .col-lg-6 {
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 50px; /* Rounded corners */
-    padding: 15px; /* Padding inside the box */
-    margin-bottom: 20px; /* Space between the boxes */
-    /*background-color: rgba(255, 255, 255, 0.8); !* Optional: Add a semi-transparent background *!*/
-     color:white;
-    font-size: 20px;
-}
-
-.contacts img {
-
-    border: 5px solid #ccc; /* Border for the images */
-    width: 20%;
-    height: auto; /* Maintain aspect ratio */
-}
-
-.description-character {
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 10px; /* Rounded corners */
-    padding: 15px; /* Padding inside the box */
-    margin-bottom: 20px; /* Space between this box and the next element */
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a semi-transparent background */
-}
-
-.inline-list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.inline-list li {
-    display: inline-block;
-    margin-right: 15px; /* Adjust spacing as needed */
-    vertical-align: top;
-}
-
-.inline-list form {
-    display: inline;
-}
-
-.inline-list button {
-    display: inline-block;
-}
-.table{
-    background-color:#83B1D3;
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 10px; /* Rounded corners */
-    padding: 15px;
-    font-size: 20px;
-}
-
-.skills{
-    background-color: white;
-    font-size: 30px;
-}
-
-.character-details{
-    background-color: #1d3853;
-    color: white;
-    font-size: 20px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 10px; /* Rounded corners */
-    padding: 15px;
-}
-
-.friend{
-    background-color: #4682B4;
-}
-
-.enemy{
-background-color:#F08080;
-
-}
-
-.friend-h3{
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 10px; /* Rounded corners */
-    background-color: #000080;
-}
-
-.enemy-h3{
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 10px; /* Rounded corners */
-    background-color: #B22222;
-
-}
-
-.divide{
-   background-color: white;
-}
-
-.stress-h2, .trauma-h2{
- color:#1D3853;
-}
-
-.name-character{
-    color: white;
-    background-color:#6495ED;
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 10px; /* Rounded corners */
-    font-size: 60px;
-}
-
-.bio{
-    margin-right: 10px;
-
-}
-
-.character{
-    /*background-image: url("/static/backgrounds/duskvol-map.jpg");*/
-    background: linear-gradient(45deg, #0F1C2E, #5D6F8A, #1B324A, #3A5973, #5B7E9A);
-    height: 94vh;
-    max-width: 100%;
-    overflow: auto;
-}
-.profile-polaroid{
-    width: 600px;
-    padding: 10px;
-    background: linear-gradient(135deg, #f5f5dc, #d2b48c);
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    transform: rotate(-5deg);
     position: relative;
     margin: 20px auto;
     font-style: italic;
     font-size: 30px;
-    border: 10px solid white;
-
 }
 
 
 .profile-polaroid:hover {
-    transform: rotate(0deg); /* Reset inclination on hover for effect */
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    transform: rotate(0deg);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-
-.experience-circle {
+/* Progress Bars */
+.progress-bar {
     text-align: center;
-    font-size: 24px;
-    position: relative;
 }
 
-.circle {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background: #007bff;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-    margin: 0 auto;
+.progress-bar-stress {
+    background: repeating-linear-gradient(45deg, cornflowerblue, cornflowerblue 10px, darkblue 10px, darkblue 20px);
 }
 
-.current {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.progress-bar-trauma {
+    background: repeating-linear-gradient(45deg, red, red 10px, darkred 10px, darkred 20px);
 }
 
-
-
-.exp{
-    font-size: 10px;
-
+/* Forms */
+.sign-form, .login-form, .edit-profile, .edit-stress-box, .character-details, .description-character, .edit-char-form, .stress-div, .trauma-div {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 50px;
 }
 
-.polaroid {
-    width: 600px; /* Adjust size as needed */
-    padding: 10px;
-    background: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    text-align: center;
-    transform: rotate(-5deg); /* Slightly inclined position */
-    position: relative;
-    margin: 20px auto;
-    font-style: italic;
-    font-size: 30px;
-}
-
-.polaroid img {
-
-    display: block;
-    margin: 0 auto 10px auto;
-
-
-}
-
-.polaroid-caption {
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.pin-icon {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 40px;
-    color: red; /* Color of the thumbtack */
-}
-
-.polaroid:hover {
-    transform: rotate(0deg); /* Reset inclination on hover for effect */
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-
-.fixed-size-image-profile {
-    width: 400px; /* Set the desired width */
-    height: 500px; /* Set the desired height */
-    object-fit: cover; /* This ensures the image covers the specified dimensions without distortion */
-}
-
-.stress-div, .trauma-div{
-    background-color: rgba(255, 255, 255, 0.9); /* Optional: Add a semi-transparent background */
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 10px; /* Rounded corners */
-
-}
-
-.progress-value-numbers{
-    color:#1D3853 ;
-}
-
-
-.edit-char{
-    background-image: url("/static/backgrounds/edit-character-bg.jpg");
-    /*background-size: cover;*/
-    height: 94vh;
-    background-position: top;
-    max-width: 100%;
-}
-
-.edit-char-form{
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a semi-transparent background */
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 10px; /* Rounded corners */
-    font-size: 20px;
-}
-
-
-
-/*SHOW CAMPAIGN*/
-
-.default-image-model{
-    align-items: center;
-    width: 270px;
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 10px; /* Rounded corners */
-}
-
-.image-users-ai{
-    height: 90px; width: 150px;
-}
-
-
-
-    .character-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 1rem;
-    }
-
-    .character-name {
-        margin-top: 0.5rem;
-        text-align: center;
-    }
-
-
-    /*Edit Skills Page*/
-
+/* Tables */
 .table {
     margin: 20px 0;
     border-collapse: separate;
@@ -1217,243 +433,59 @@ background-color:#F08080;
 
 .table th, .table td {
     padding: 10px 20px;
-    border: 10px solid #1D3853 ;
-    border-radius: 20px;
-}
-
-.table th {
     background-color: #f4f4f4;
     font-weight: bold;
-
 }
 
-.table td {
-    background-color: #f4f4f4;
-}
-
-.table th, .table td:first-child {
-    border-left:10px solid #1D3853;
+.table th, .table td {
+    border: 10px solid #1D3853;
     border-radius: 20px;
-
-}
-
-.table th, .table td:last-child {
-    border-right: 10px solid #1D3853;
-    border-bottom:10px solid #1D3853;
-
 }
 
 .table th:first-child, .table td:first-child {
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    border-bottom:10px solid #1D3853;
-
-
 }
 
 .table th:last-child, .table td:last-child {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    border-bottom:10px solid #1D3853;
 }
 
-.table-bordered thead td, .table-bordered thead th{
+.table-bordered thead td, .table-bordered thead th {
     border-bottom-width: 10px;
     border-bottom-color: #1D3853;
-
 }
 
-.edit-picture{
+/* Miscellaneous Classes */
+.align-items-center, .justify-content-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-picture {
     border: 10px solid #83B1D3;
     border-radius: 20px;
 }
 
-.align-items-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-/* Edit Stress Form*/
-    .edit-stress-container{
-        background-image: url("/static/backgrounds/duskvol.jpg");
-        height: 94vh;
-        background-position: top;
-        max-width: 100%;
-    }
-
-
-.edit-stress-box {
-
-    margin-top: 50px;
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: rgba(148, 177, 181, 0.9); /* Adjust the last value for more or less transparency */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-    border-radius: 8px;
-
-}
-
-.box-header {
-    position: relative;
-    text-align: center;
-}
-
-
-
-.stress-form {
-    margin-top: 20px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    font-weight: bold;
-}
-
-/*.btn {*/
-/*    width: 100%;*/
-/*}*/
-
-/*ALL CHARACTERS PAGE*/
-
-.all-chars {
-    background-image: url("/static/backgrounds/ma-char-bg.jpg");
-    height: 94vh;
-    background-position: top;
-    max-width: 100%;
-
-}
-
-.character-list {
-    background: linear-gradient(45deg, rgba(214, 179, 123, 0.9), rgba(214, 179, 123, 0.75), rgba(214, 179, 123, 0.6), rgba(214, 179, 123, 0.45), rgba(214, 179, 123, 0.3));
-    border-radius: 10px;
-}
-
-.my-char-container {
-    background: linear-gradient(45deg, rgba(214, 179, 123, 0.9), rgba(214, 179, 123, 0.75), rgba(214, 179, 123, 0.6), rgba(214, 179, 123, 0.45), rgba(214, 179, 123, 0.3));
-    border-radius: 10px;
-}
-
-.char-text{
-    font-size: 60px;
-
-}
-
-/* Edit Stress Form */
 .edit-stress-container {
     background-image: url("/static/backgrounds/duskvol.jpg");
-    height: 94vh;
-    background-position: top;
-    max-width: 100%;
 }
 
-.edit-stress-box {
-    margin-top: 50px;
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: rgba(148, 177, 181, 0.9);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-    border-radius: 8px;
-}
-
-.box-header {
-    position: relative;
-    text-align: center;
-}
-
-.stress-form {
-    margin-top: 20px;
-}
-
-.circular-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto;
-}
-
-.circle-segment {
-    flex: 1 1 25%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 5px;
-    box-sizing: border-box;
-    position: absolute;
-}
-
-.circle-segment label {
-    transform: rotate(-90deg);
-    white-space: nowrap;
-    font-size: 0.8em;
-}
-
-.circle-segment input[type="checkbox"] {
-    display: none;
-}
-
-.circle-segment input[type="checkbox"] + label {
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-}
-
-.circle-segment input[type="checkbox"]:checked + label {
-    background-color: rgba(0, 123, 255, 0.8);
-    color: #fff;
-}
-
-
-.chosen-playbook{
-    background-image: url("/static/backgrounds/background-playbook.jpg");
-    height: 94vh;
-    background-position: top;
-    max-width: 100%;
-}
-
-/* MY CHARACTERS*/
-
-
-.polaroid-all-characters{
-    width: 300px; /* Adjust size as needed */
-    padding: 10px;
+/* Polaroid Cards */
+.polaroid-all-characters, .polaroid-all-campaigns {
     background: #F3ECD9;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    text-align: center;
-    transform: rotate(-5deg); /* Slightly inclined position */
-    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: rotate(-5deg);
     margin: 20px auto;
-}
-
-.polaroid-all-characters img {
-    /*width: 80%;*/
-    /*height: auto;*/
-    display: block;
-    margin: 0 auto 10px auto;
+    font-style: italic;
+    font-size: 20px;
 }
 
 .polaroid-caption-all-characters {
     font-weight: bold;
     margin-top: 10px;
-    font-style: italic;
-    font-size: 20px;
-
 }
 
 .pin-icon {
@@ -1462,259 +494,32 @@ background-color:#F08080;
     left: 50%;
     transform: translateX(-50%);
     font-size: 60px;
-    color: red; /* Color of the thumbtack */
-}
-
-.polaroid-all-characters:hover {
-    transform: rotate(0deg); /* Reset inclination on hover for effect */
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-
-.fixed-size-image-all-characters {
-    width: 150px; /* Set the desired width */
-    height: 200px; /* Set the desired height */
-    object-fit: cover; /* This ensures the image covers the specified dimensions without distortion */
-}
-
-/*Sessions*/
-
-.session-create{
-    background-image: url("/static/backgrounds/character-bg copy.jpg");
-    height: 94vh;
-    background-position: top;
-    max-width: 100%;
-}
-
-
-/*JOIN CAMPAIGN FORM*/
-
-.join-campaign{
-    background-image: url("/static/image/homepage.jpg");
-    height: 94vh;
-
-    max-width: 100%;
-}
-
-
-/*SHOW CAMPAIGN*/
-   .character-card {
-        width: 30%;
-        margin: 1%;
-        position: relative;
-    }
-
-    .character-circle {
-        width: 100%;
-        padding-bottom: 100%; /* Aspect ratio 1:1 */
-        background-size: cover;
-        background-position: center;
-        border-radius: 50%;
-        position: relative;
-    }
-
-    .character-name-overlay {
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: white;
-        padding: 5px;
-        text-align: center;
-        border-bottom-left-radius: 50%;
-        border-bottom-right-radius: 50%;
-        position: absolute;
-    }
-
-      .custom-pagination .page-item .page-link {
-        color: #343a40; /* Dark color for pagination links */
-        background-color: #f8f9fa; /* Light grey background */
-        border: 1px solid #dee2e6; /* Light grey border */
-        margin: 0 2px; /* Spacing between pagination items */
-        border-radius: 4px; /* Rounded corners */
-    }
-
-    .custom-pagination .page-item.active .page-link {
-        background-color: #343a40; /* Dark background for active page */
-        color: #fff; /* White text for active page */
-        border: 1px solid #343a40; /* Dark border for active page */
-    }
-
-    .custom-pagination .page-item.disabled .page-link {
-        background-color: #e9ecef; /* Disabled background color */
-        color: #6c757d; /* Disabled text color */
-        border: 1px solid #dee2e6; /* Light grey border */
-    }
-
-    .custom-pagination .page-link:hover {
-        background-color: #e9ecef; /* Hover background color */
-        color: #343a40; /* Hover text color */
-    }
-
-    /*PARTICIPATING CAMPAIGNS*/
-
-
-
-.participating{
-    background-image: url("/static/backgrounds/character-bg copy.jpg");
-    background-size: cover;
-    height: 94vh;
-    background-position: top;
-    max-width: 100%;
-    background-repeat: repeat; /* Repeat the background image */
-    overflow: auto;;
-}
-
-
-        .participating-polaroid-card {
-        background-color: rgba(255, 255, 255, 0.8); /* Adjust the last value for more or less transparency */
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        transition: transform 0.2s;
-        cursor: pointer;
-        text-align: center;
-    }
-    .participating-polaroid-card:hover {
-        transform: scale(1.05);
-    }
-
-    .polaroid-image {
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 50%;
-        margin: 0 auto;
-    }
-
-    .participating-pagination {
-        display: flex;
-        justify-content: center;
-    }
-    .participating-pagination .btn {
-        margin-bottom: 15px;
-    }
-
-    .row.justify-content-left {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .col-md-4 {
-        display: flex;
-        justify-content: center;
-    }
-
-
-    .participating-camp{
-        padding:20px;
-    }
-    .part-camp{
-        font-size:50px;
-    }
-
-    .character-card {
-        position: relative;
-    }
-
-    .delete-character-overlay {
-        top: 0;
-        right: 0;
-        cursor: pointer;
-        color: rgba(220, 53, 69, 0.9);
-        font-size: 20px;
-
-    }
-
-
- .all-camps .polaroid-all-campaigns {
-    position: relative;
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: white;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-
-.all-camps .polaroid-all-campaigns:hover {
-    box-shadow: 4px 4px 16px rgba(0,0,0,0.2);
-}
-
-.all-camps .fixed-size-image-all-campaigns {
-    width: 100%;
-    height: auto;
-}
-
-.all-camps .polaroid-caption-all-campaigns {
-    text-align: center;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-.all-camps .pin-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
     color: red;
 }
 
-.card-buttons {
-    top: 10px;
-    right: 10px;
+.polaroid-all-characters:hover, .polaroid-all-campaigns:hover {
+    transform: rotate(0deg);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-.all-camps{
-    background-image: url("/static/backgrounds/character-bg copy.jpg");
-    background-size: cover;
-    height: 94vh;
-    background-position: top;
-    max-width: 100%;
-    background-repeat: repeat; /* Repeat the background image */
-    overflow: auto;;
+.character-container {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
-
-
-.all-chars .polaroid-all-characters {
-    position: relative;
-    border: 1px solid #ccc;
-    padding: 10px;
-
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+.character-name {
+    margin-top: 0.5rem;
 }
 
-.all-chars .polaroid-all-characters:hover {
-    box-shadow: 4px 4px 16px rgba(0,0,0,0.2);
+/* Cards */
+.card:hover, .campaign-list:hover, .participating-polaroid-card:hover, .polaroid-all-campaigns:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.all-chars .fixed-size-image-characters {
-    width: 100%;
-    height: auto;
-}
-
-.all-chars .polaroid-caption-all-characters {
-    text-align: center;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-.card-body {
-    text-align: center;
-    padding: 10px; /* Added padding to ensure text doesn't touch the border */
-    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
-}
-
-.card-buttons {
-    top: 10px;
-    right: 10px;
-}
-
-.camp-pagination {
-    text-align: center;
-}
-
-.camp-pagination .btn {
-    margin: 5px;
+/* Contacts */
+.contacts .col-md-6 {
+    padding: 15px;
+    margin-bottom: 20px;
 }

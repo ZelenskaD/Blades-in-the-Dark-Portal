@@ -59,7 +59,7 @@ Blades In The Dark
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>{{ session.notes }}</p>
+                                                    <p>{{ session.notes|safe }}</p>
                                                     {% if session.updated_at and session.updated_at != session.created_at %}
                                                         <p>Updated At: {{ session.updated_at.strftime('%b %d %H:%M') }}</p>
                                                     {% else %}

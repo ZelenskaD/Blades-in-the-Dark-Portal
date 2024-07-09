@@ -28,7 +28,7 @@ def add_session(campaign_id):
         current_time = datetime.utcnow()
         new_session = Session(
             title=form.title.data,
-            notes=form.notes.data,
+            notes=form.notes.data.replace('\n', '<br>'),
             created_at=current_time,
             updated_at=current_time,
             campaign_id=campaign_id

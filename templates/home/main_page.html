@@ -6,40 +6,42 @@ Blades Portal - Main Page
 {% block content %}
 <div class="homepage-container text-center">
     <div class="row justify-content-center">
-        <h1 class="homepage-h2">Your adventure begins here!</h1>
+        <div class="col-12">
+            <h1 class="homepage-h2">Your adventure begins here!</h1>
+        </div>
     </div>
-    <div class="count-cards row justify-content-center mt-5">
-        <div class="col-md-2">
-            <div class="card-count">
-                <div class="card-body">
-                    <h1 class="count-card-title">Users</h1>
-                    <h1 style="font-size:20px; " class="count-card-title">in the Blades Portal</h1>
-                    <p style="font-size:40px;" class="count-card-text">{{ user_count }}</p>
+    <div class="container" style="max-width: 1200px;">
+        <div class="count-cards row justify-content-center mt-5">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+                <div class="card-count text-center" style="width: 250px; height: 250px;">
+                    <div class="card-body">
+                        <h1 class="count-card-title">Users</h1>
+                        <h1 style="font-size:20px;" class="count-card-title">in the Blades Portal</h1>
+                        <p style="font-size:40px;" class="count-card-text">{{ user_count }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-2">
-            <div class="card-count">
-                <div class="card-body" onclick="window.location.href='{{ url_for('characters.show_all_characters') }}'">
-                    <h1 class="count-card-title">My Characters</h1>
-
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+                <div class="card-count text-center" style="width: 250px; height: 250px;" onclick="window.location.href='{{ url_for('characters.show_all_characters') }}'">
+                    <div class="card-body">
+                        <h1 class="count-card-title">My Characters</h1>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-2">
-            <div class="card-count">
-                <div class="card-body" onclick="window.location.href='{{ url_for('campaigns.my_campaigns') }}'">
-                    <h1 class="count-card-title">My Campaigns</h1>
-
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+                <div class="card-count text-center" style="width: 250px; height: 250px;" onclick="window.location.href='{{ url_for('campaigns.my_campaigns') }}'">
+                    <div class="card-body">
+                        <h1 class="count-card-title">My Campaigns</h1>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-2">
-            <div class="card-count">
-                <div class="card-body">
-                    <h1  class="count-card-title">Playbooks</h1>
-                    <h1 style="font-size:20px; " class="count-card-title">that you can play</h1>
-                    <p style="font-size:40px;" class="count-card-text">{{ playbook_count }}</p>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+                <div class="card-count text-center" style="width: 250px; height: 250px;">
+                    <div class="card-body">
+                        <h1 class="count-card-title">Playbooks</h1>
+                        <h1 style="font-size:20px;" class="count-card-title">that you can play</h1>
+                        <p style="font-size:40px;" class="count-card-text">{{ playbook_count }}</p>
+                    </div>
                 </div>
             </div>
         </div>
